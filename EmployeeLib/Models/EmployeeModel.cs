@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EmployeeLib.Models
 {
-    public class EmployeeModel
+    public abstract class EmployeeModel
     {
         public int Id { get; set; }
         public string FullName { get; set; }
@@ -15,8 +15,8 @@ namespace EmployeeLib.Models
         public int AmountOfKids { get; set; } = 0;
         public int UnitId { get; set; }
         public UnitModel Unit { get; set; }
-        
-
+        public abstract decimal GetSalary();
+        public 
     }
 
 }
