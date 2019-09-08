@@ -1,10 +1,11 @@
-﻿using System;
+﻿using EmployeeLib.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EmployeeLib.Models
 {
-    public abstract class EmployeeModel
+    public  class EmployeeModel 
     {
         public int Id { get; set; }
         public string FullName { get; set; }
@@ -14,9 +15,9 @@ namespace EmployeeLib.Models
         public bool HasKids { get; set; }
         public int AmountOfKids { get; set; } = 0;
         public int UnitId { get; set; }
+        public int PositionId { get; set; }
+        public PositionModel Position { get; set; }
         public UnitModel Unit { get; set; }
-        public abstract decimal GetSalary();
-        public 
     }
 
 }
