@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EmployeeAppLib.Models
 {
-    public abstract class EmployeeModel 
+    public class EmployeeModel 
     {
         public int Id { get; set; }
         public string FullName { get; set; }

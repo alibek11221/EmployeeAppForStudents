@@ -19,5 +19,22 @@ namespace EmployeeAppUi
             InitializeComponent();
         }
 
+        private void UnitsButton_Click(object sender, EventArgs e)
+        {
+            Units unit = new Units();
+            unit.ShowDialog();
+            unit.Dispose();
+        }
+
+        private void PaymentsButton_Click(object sender, EventArgs e)
+        {
+            UnitsList.Items.Clear();
+
+            List<UnitModel> units = new List<UnitModel>().GetAllUnits();
+            foreach (UnitModel unit in units)
+            {
+                UnitsList.Items.Add($"{unit.Id} : {unit.UnitName}");
+            }
+        }
     }
 }

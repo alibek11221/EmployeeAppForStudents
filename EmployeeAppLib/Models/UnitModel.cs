@@ -9,6 +9,6 @@ namespace EmployeeAppLib.Models
     {
         public int Id { get; set; }
         public string UnitName { get; set; }
-        public List<EmployeeModel> Employees { get; set; }
+        public List<EmployeeModel> Employees { get; set; } = new List<EmployeeModel>();
     }
 }

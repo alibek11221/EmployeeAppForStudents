@@ -28,25 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.UnitsButton = new System.Windows.Forms.Button();
+            this.EmployeeButton = new System.Windows.Forms.Button();
+            this.PaymentsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // UnitsButton
             // 
-            this.button1.Location = new System.Drawing.Point(37, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(319, 52);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.UnitsButton.Location = new System.Drawing.Point(12, 42);
+            this.UnitsButton.Name = "UnitsButton";
+            this.UnitsButton.Size = new System.Drawing.Size(328, 52);
+            this.UnitsButton.TabIndex = 0;
+            this.UnitsButton.Text = "Отделы";
+            this.UnitsButton.UseVisualStyleBackColor = true;
+            this.UnitsButton.Click += new System.EventHandler(this.UnitsButton_Click);
+            // 
+            // EmployeeButton
+            // 
+            this.EmployeeButton.Location = new System.Drawing.Point(12, 123);
+            this.EmployeeButton.Name = "EmployeeButton";
+            this.EmployeeButton.Size = new System.Drawing.Size(328, 52);
+            this.EmployeeButton.TabIndex = 1;
+            this.EmployeeButton.Text = "Сотрудники";
+            this.EmployeeButton.UseVisualStyleBackColor = true;
+            // 
+            // PaymentsButton
+            // 
+            this.PaymentsButton.Location = new System.Drawing.Point(12, 211);
+            this.PaymentsButton.Name = "PaymentsButton";
+            this.PaymentsButton.Size = new System.Drawing.Size(328, 52);
+            this.PaymentsButton.TabIndex = 2;
+            this.PaymentsButton.Text = "Выплаты";
+            this.PaymentsButton.UseVisualStyleBackColor = true;
+            this.PaymentsButton.Click += new System.EventHandler(this.PaymentsButton_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(386, 559);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(360, 306);
+            this.Controls.Add(this.PaymentsButton);
+            this.Controls.Add(this.EmployeeButton);
+            this.Controls.Add(this.UnitsButton);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -59,7 +83,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button UnitsButton;
+        private System.Windows.Forms.Button EmployeeButton;
+        private System.Windows.Forms.Button PaymentsButton;
     }
 }
 
