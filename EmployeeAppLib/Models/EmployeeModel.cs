@@ -1,11 +1,11 @@
-﻿using EmployeeLib.Interfaces;
+﻿using EmployeeAppLib.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmployeeLib.Models
+namespace EmployeeAppLib.Models
 {
-    public  class EmployeeModel 
+    public abstract class EmployeeModel 
     {
         public int Id { get; set; }
         public string FullName { get; set; }
@@ -16,8 +16,12 @@ namespace EmployeeLib.Models
         public int AmountOfKids { get; set; } = 0;
         public int UnitId { get; set; }
         public int PositionId { get; set; }
+        public List<PaymentModel> Payments { get; set; } = new List<PaymentModel>();
         public PositionModel Position { get; set; }
         public UnitModel Unit { get; set; }
-    }
+        public EmployeeModel()
+        {
 
+        }
+    }
 }

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeAppUi", "EmployeeAppUi\EmployeeAppUi.csproj", "{03EE2062-FA7B-47B6-BB49-B9C1B60EBF95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeAppLib", "ClassLibrary1\EmployeeAppLib.csproj", "{359EE697-670D-4847-ABFB-317652643927}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeAppLib", "EmployeeAppLib\EmployeeAppLib.csproj", "{359EE697-670D-4847-ABFB-317652643927}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

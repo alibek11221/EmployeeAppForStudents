@@ -1,9 +1,9 @@
-﻿using EmployeeLib.Interfaces;
+﻿using EmployeeAppLib.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmployeeLib.Models
+namespace EmployeeAppLib.Models
 {
     public class DepartmentHead : EmployeeModel, ISalary, IBonus
     {
@@ -13,13 +13,13 @@ namespace EmployeeLib.Models
             switch (bonus)
             {
                 case Bonuses.Double:
-                    Bonus = Position.HourSalary * 2;
+                    Bonus = Position.DayliSalary * 2;
                     break;
                 case Bonuses.Half:
-                    Bonus = Position.HourSalary * 0.5M;
+                    Bonus = Position.DayliSalary * 0.5M;
                     break;
                 case Bonuses.Quarter:
-                    Bonus = Position.HourSalary * 0.25M;
+                    Bonus = Position.DayliSalary * 0.25M;
                     break;
                 default:
                     Bonus = 0;
@@ -29,7 +29,7 @@ namespace EmployeeLib.Models
 
         public decimal GetSalary(DateTime begin, DateTime end)
         {
-            return Position.HourSalary + Bonus * 0.13M;
+            return Position.DayliSalary + Bonus * 0.13M;
         }
 
     }

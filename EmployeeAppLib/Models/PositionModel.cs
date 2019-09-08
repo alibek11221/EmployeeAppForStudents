@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmployeeLib.Models
+namespace EmployeeAppLib.Models
 {
     public class PositionModel
     {
         public int Id { get; set; }
         public string PositionName { get; set; }
-        public int HourSalary { get; set; }
+        public int DayliSalary { get; set; }
         public List<EmployeeModel> Employees { get; set; }
     }
 }
