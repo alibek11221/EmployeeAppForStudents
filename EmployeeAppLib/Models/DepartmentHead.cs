@@ -7,7 +7,9 @@ namespace EmployeeAppLib.Models
 {
     public class DepartmentHead : EmployeeModel, ISalary, IBonus
     {
-        public decimal Bonus { get; set; }
+        private decimal bonus;
+
+        public decimal Bonus { get => bonus; set => bonus = value; }
         public void GetBonus(Bonuses bonus)
         {
             switch (bonus)
