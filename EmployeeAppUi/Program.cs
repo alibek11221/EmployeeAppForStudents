@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeAppLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,8 +15,10 @@ namespace EmployeeAppUi
         [STAThread]
         static void Main()
         {
+            const string CnnString = "EmployeeCnn";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            GeneralConfig.SetCnnString(CnnString);
             Application.Run(new Main());
         }
     }

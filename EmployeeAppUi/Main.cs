@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EmployeeAppLib;
+using EmployeeAppLib.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +18,6 @@ namespace EmployeeAppUi
         {
             InitializeComponent();
         }
+
     }
 }
