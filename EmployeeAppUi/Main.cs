@@ -28,13 +28,14 @@ namespace EmployeeAppUi
 
         private void PaymentsButton_Click(object sender, EventArgs e)
         {
-            UnitsList.Items.Clear();
+            
+        }
 
-            List<UnitModel> units = new List<UnitModel>().GetAllUnits();
-            foreach (UnitModel unit in units)
-            {
-                UnitsList.Items.Add($"{unit.Id} : {unit.UnitName}");
-            }
+        private void EmployeeButton_Click(object sender, EventArgs e)
+        {
+            Employee employee = new Employee();
+            employee.ShowDialog();
+            employee.Dispose();
         }
     }
 }

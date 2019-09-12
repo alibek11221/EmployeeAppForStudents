@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EmployeeAppLib;
+using EmployeeAppLib.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,16 @@ namespace EmployeeAppUi
         public Employee()
         {
             InitializeComponent();
+        }
+
+        private void Employee_Load(object sender, EventArgs e)
+        {
+            List<UnitModel> units = new List<UnitModel>().GetAllUnits();
+            foreach (var unit in units)
+            {
+                UnitComboBox.Items.Add(unit.UnitName);
+            }
+          
         }
     }
 }

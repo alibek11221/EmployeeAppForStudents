@@ -51,6 +51,7 @@
             this.EmployeeButton.TabIndex = 1;
             this.EmployeeButton.Text = "Сотрудники";
             this.EmployeeButton.UseVisualStyleBackColor = true;
+            this.EmployeeButton.Click += new System.EventHandler(this.EmployeeButton_Click);
             // 
             // PaymentsButton
             // 
@@ -67,7 +68,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(360, 306);
+            this.ClientSize = new System.Drawing.Size(369, 314);
             this.Controls.Add(this.PaymentsButton);
             this.Controls.Add(this.EmployeeButton);
             this.Controls.Add(this.UnitsButton);

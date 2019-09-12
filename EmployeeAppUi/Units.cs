@@ -14,6 +14,7 @@ namespace EmployeeAppUi
 {
     public partial class Units : Form
     {
+  
         public Units()
         {
             InitializeComponent();
@@ -22,14 +23,13 @@ namespace EmployeeAppUi
         private void RefreshButton_Click(object sender, EventArgs e)
         {
             UnitsList.Items.Clear();
-
             List<UnitModel> units = new List<UnitModel>().GetAllUnits();
             foreach (UnitModel unit in units)
             {
                 UnitsList.Items.Add($"{unit.Id} : {unit.UnitName}");
             }
         }
-        private bool ValidateForm()
+        private bool ValidateUnitForm()
         {
             bool output = true;
             if (UnitNameTextBox.Text == string.Empty)
@@ -39,7 +39,7 @@ namespace EmployeeAppUi
 
         private void AddUnitButton_Click(object sender, EventArgs e)
         {
-            if (ValidateForm())
+            if (ValidateUnitForm())
             {
                 UnitModel unit = new UnitModel();
                 unit.UnitName = UnitNameTextBox.Text;
@@ -50,5 +50,11 @@ namespace EmployeeAppUi
                 MessageBox.Show("Введите название отдела", "Не введено название", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void AddPositionButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

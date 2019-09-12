@@ -15,10 +15,8 @@ namespace EmployeeAppLib.Models
         public bool HasKids { get; set; }
         public int AmountOfKids { get; set; } = 0;
         public int UnitId { get; set; }
-        public int PositionId { get; set; }
-        public List<PaymentModel> Payments { get; set; } = new List<PaymentModel>();
-        public PositionModel Position { get; set; }
         public UnitModel Unit { get; set; }
+        public List<PaymentModel> Payments { get; set; } = new List<PaymentModel>();
         public EmployeeModel()
         {
 
