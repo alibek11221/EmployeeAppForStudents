@@ -45,7 +45,7 @@
             // 
             // EmployeeButton
             // 
-            this.EmployeeButton.Location = new System.Drawing.Point(12, 123);
+            this.EmployeeButton.Location = new System.Drawing.Point(12, 114);
             this.EmployeeButton.Name = "EmployeeButton";
             this.EmployeeButton.Size = new System.Drawing.Size(328, 52);
             this.EmployeeButton.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             // PaymentsButton
             // 
-            this.PaymentsButton.Location = new System.Drawing.Point(12, 211);
+            this.PaymentsButton.Location = new System.Drawing.Point(12, 182);
             this.PaymentsButton.Name = "PaymentsButton";
             this.PaymentsButton.Size = new System.Drawing.Size(328, 52);
             this.PaymentsButton.TabIndex = 2;
@@ -68,7 +68,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(369, 314);
+            this.ClientSize = new System.Drawing.Size(352, 322);
             this.Controls.Add(this.PaymentsButton);
             this.Controls.Add(this.EmployeeButton);
             this.Controls.Add(this.UnitsButton);
@@ -78,6 +78,7 @@
             this.Name = "Main";
             this.ShowIcon = false;
             this.Text = "Главная";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
 
         }

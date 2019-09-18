@@ -1,4 +1,5 @@
 ﻿using EmployeeAppLib;
+using EmployeeAppLib.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace EmployeeAppUi
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
+
         [STAThread]
         static void Main()
         {

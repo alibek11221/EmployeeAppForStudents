@@ -128,9 +128,6 @@
   <ItemGroup>
     <Compile Include="Enums.cs" />
     <Compile Include="GeneralConfig.cs" />
-    <Compile Include="Interfaces\IBonus.cs" />
-    <Compile Include="Interfaces\ISalary.cs" />
-    <Compile Include="Models\DepartmentHead.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\PaymentModel.cs" />
     <Compile Include="Models\PositionModel.cs" />

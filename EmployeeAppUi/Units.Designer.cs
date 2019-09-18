@@ -36,12 +36,12 @@
             this.AddPositionButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.UnitComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.PositionSalaryBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.PositionNameBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.UnitComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -118,9 +118,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.PositionSalaryBox);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.PositionNameBox);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.UnitComboBox);
@@ -132,23 +132,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Должности";
             // 
-            // UnitComboBox
+            // PositionSalaryBox
             // 
-            this.UnitComboBox.FormattingEnabled = true;
-            this.UnitComboBox.Location = new System.Drawing.Point(6, 59);
-            this.UnitComboBox.Name = "UnitComboBox";
-            this.UnitComboBox.Size = new System.Drawing.Size(299, 27);
-            this.UnitComboBox.TabIndex = 7;
-            this.UnitComboBox.Text = "Выберите отдел";
+            this.PositionSalaryBox.Location = new System.Drawing.Point(6, 229);
+            this.PositionSalaryBox.Name = "PositionSalaryBox";
+            this.PositionSalaryBox.Size = new System.Drawing.Size(299, 26);
+            this.PositionSalaryBox.TabIndex = 12;
             // 
-            // label2
+            // label4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 19);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Отдел";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 207);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(210, 19);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Оплата за один рабочий день\r\n";
+            // 
+            // PositionNameBox
+            // 
+            this.PositionNameBox.Location = new System.Drawing.Point(6, 143);
+            this.PositionNameBox.Name = "PositionNameBox";
+            this.PositionNameBox.Size = new System.Drawing.Size(299, 26);
+            this.PositionNameBox.TabIndex = 10;
             // 
             // label3
             // 
@@ -159,28 +164,25 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Название должности";
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 143);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(299, 26);
-            this.textBox1.TabIndex = 10;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 19);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Отдел";
             // 
-            // textBox2
+            // UnitComboBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 229);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(299, 26);
-            this.textBox2.TabIndex = 12;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 207);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(210, 19);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Оплата за один рабочий день\r\n";
+            this.UnitComboBox.FormattingEnabled = true;
+            this.UnitComboBox.Location = new System.Drawing.Point(6, 59);
+            this.UnitComboBox.Name = "UnitComboBox";
+            this.UnitComboBox.Size = new System.Drawing.Size(299, 27);
+            this.UnitComboBox.TabIndex = 7;
+            this.UnitComboBox.Text = "Выберите отдел";
+            this.UnitComboBox.DropDown += new System.EventHandler(this.UnitComboBox_DropDown);
+            this.UnitComboBox.Enter += new System.EventHandler(this.UnitComboBox_Enter);
             // 
             // Units
             // 
@@ -194,6 +196,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Units";
             this.Text = "Units";
+            this.Load += new System.EventHandler(this.Units_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -211,9 +214,9 @@
         private System.Windows.Forms.Button AddPositionButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox PositionSalaryBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PositionNameBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox UnitComboBox;

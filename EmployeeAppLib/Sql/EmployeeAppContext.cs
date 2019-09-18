@@ -14,7 +14,7 @@ namespace EmployeeLib.Sql
         public DbSet<PaymentModel> Payments { get; set; }
         public DbSet<UnitModel> Units { get; set; }
 
-        public EmployeeAppContext(DbContextOptions<EmployeeAppContext> options)
+        public  EmployeeAppContext(DbContextOptions<EmployeeAppContext> options)
             : base(options)
         {
             Database.EnsureCreated();

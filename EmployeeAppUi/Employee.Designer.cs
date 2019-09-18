@@ -42,19 +42,20 @@
             this.HasKidsCheckBox = new System.Windows.Forms.CheckBox();
             this.KidsAmountNumeric = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.PositionsComboBox = new System.Windows.Forms.ComboBox();
             this.UnitComboBox = new System.Windows.Forms.ComboBox();
+            this.PositionListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.KidsAmountNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 512);
+            this.button1.Location = new System.Drawing.Point(17, 400);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(261, 60);
+            this.button1.Size = new System.Drawing.Size(564, 43);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label1
             // 
@@ -168,32 +169,33 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Кол-во детей";
             // 
-            // PositionsComboBox
-            // 
-            this.PositionsComboBox.FormattingEnabled = true;
-            this.PositionsComboBox.Location = new System.Drawing.Point(12, 447);
-            this.PositionsComboBox.Name = "PositionsComboBox";
-            this.PositionsComboBox.Size = new System.Drawing.Size(257, 27);
-            this.PositionsComboBox.TabIndex = 14;
-            this.PositionsComboBox.Text = "Должность";
-            // 
             // UnitComboBox
             // 
             this.UnitComboBox.FormattingEnabled = true;
-            this.UnitComboBox.Location = new System.Drawing.Point(12, 394);
+            this.UnitComboBox.Location = new System.Drawing.Point(324, 31);
             this.UnitComboBox.Name = "UnitComboBox";
             this.UnitComboBox.Size = new System.Drawing.Size(257, 27);
             this.UnitComboBox.TabIndex = 15;
             this.UnitComboBox.Text = "Отдел";
+            this.UnitComboBox.SelectedIndexChanged += new System.EventHandler(this.UnitComboBox_SelectedIndexChanged);
+            // 
+            // PositionListBox
+            // 
+            this.PositionListBox.FormattingEnabled = true;
+            this.PositionListBox.ItemHeight = 19;
+            this.PositionListBox.Location = new System.Drawing.Point(324, 76);
+            this.PositionListBox.Name = "PositionListBox";
+            this.PositionListBox.Size = new System.Drawing.Size(257, 251);
+            this.PositionListBox.TabIndex = 16;
             // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(292, 608);
+            this.ClientSize = new System.Drawing.Size(610, 474);
+            this.Controls.Add(this.PositionListBox);
             this.Controls.Add(this.UnitComboBox);
-            this.Controls.Add(this.PositionsComboBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.KidsAmountNumeric);
             this.Controls.Add(this.HasKidsCheckBox);
@@ -236,7 +238,7 @@
         private System.Windows.Forms.CheckBox HasKidsCheckBox;
         private System.Windows.Forms.NumericUpDown KidsAmountNumeric;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox PositionsComboBox;
         private System.Windows.Forms.ComboBox UnitComboBox;
+        private System.Windows.Forms.ListBox PositionListBox;
     }
 }

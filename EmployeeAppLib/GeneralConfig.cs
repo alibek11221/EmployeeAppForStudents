@@ -67,10 +67,15 @@ namespace EmployeeAppLib
         {
             using (Db = new EmployeeAppContext(Options))
             {
-                foreach (UnitModel unit in Db.Units)
-                {
-                    units.Add(unit);
-                }
+                units = Db.Units.ToList();
+            }
+            return units;
+        }
+        public static List<UnitModel> GetAllUnitsWithPositions(this List<UnitModel> units)
+        {
+            using (Db = new EmployeeAppContext(Options))
+            {
+                units = Db.Units.Include(u => u.Positions).ToList();
             }
             return units;
         }
@@ -100,12 +105,19 @@ namespace EmployeeAppLib
         {
             using(Db = new EmployeeAppContext(Options))
             {
-                foreach (PaymentModel payment in Db.Payments)
+                return Db.Payments.ToList();
+            }
+        }
+        public static List<PositionModel> GetPOsitionByUnit(this List<PositionModel> positions, UnitModel unit)
+        {
+            using(Db = new EmployeeAppContext(Options))
+            {
+                foreach (PositionModel _position in unit.Positions)
                 {
-                    payments.Add(payment);
+                    positions.Add(_position);
                 }
             }
-            return payments;
+            return positions;
         }
     }
 }

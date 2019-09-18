@@ -21,12 +21,20 @@ namespace EmployeeAppUi
 
         private void Employee_Load(object sender, EventArgs e)
         {
-            List<UnitModel> units = new List<UnitModel>().GetAllUnits();
+            List<UnitModel> units = new List<UnitModel>();
             foreach (var unit in units)
             {
                 UnitComboBox.Items.Add(unit.UnitName);
             }
-          
+        }
+        private void UnitComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

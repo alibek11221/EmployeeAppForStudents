@@ -37,5 +37,10 @@ namespace EmployeeAppUi
             employee.ShowDialog();
             employee.Dispose();
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
