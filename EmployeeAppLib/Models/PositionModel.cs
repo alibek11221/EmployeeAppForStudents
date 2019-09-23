@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EmployeeAppLib.Models
 {
@@ -9,8 +11,8 @@ namespace EmployeeAppLib.Models
         public int Id { get; set; }
         public string PositionName { get; set; }
         public int DayliSalary { get; set; }
-        public int UnitId { get; set; }
+        public int UnitID { get; set; }
         public UnitModel Unit { get; set; }
-        public List<EmployeeModel> Employees { get; set; }
+        public EmployeeModel Employee { get; set; }
     }
 }

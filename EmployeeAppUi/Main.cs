@@ -28,19 +28,16 @@ namespace EmployeeAppUi
 
         private void PaymentsButton_Click(object sender, EventArgs e)
         {
-            
+            PaymentsFrom paymentsFrom = new PaymentsFrom();
+            paymentsFrom.ShowDialog();
+            paymentsFrom.Dispose();
         }
 
-        private void EmployeeButton_Click(object sender, EventArgs e)
+        private void EmployeesButton_Click(object sender, EventArgs e)
         {
-            Employee employee = new Employee();
+            EmployeesForm employee = new EmployeesForm();
             employee.ShowDialog();
             employee.Dispose();
-        }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

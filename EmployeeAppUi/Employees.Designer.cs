@@ -1,6 +1,6 @@
 ﻿namespace EmployeeAppUi
 {
-    partial class Employee
+    partial class EmployeesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.AddEmployeeButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SurnameBox = new System.Windows.Forms.TextBox();
             this.NameBox = new System.Windows.Forms.TextBox();
@@ -44,18 +44,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.UnitComboBox = new System.Windows.Forms.ComboBox();
             this.PositionListBox = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.IsMarried = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.KidsAmountNumeric)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // AddEmployeeButton
             // 
-            this.button1.Location = new System.Drawing.Point(17, 400);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(564, 43);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.AddEmployeeButton.Location = new System.Drawing.Point(16, 399);
+            this.AddEmployeeButton.Name = "AddEmployeeButton";
+            this.AddEmployeeButton.Size = new System.Drawing.Size(565, 43);
+            this.AddEmployeeButton.TabIndex = 0;
+            this.AddEmployeeButton.Text = "Добавить сотрудника";
+            this.AddEmployeeButton.UseVisualStyleBackColor = true;
+            this.AddEmployeeButton.Click += new System.EventHandler(this.AddEmployeeButton_Click);
             // 
             // label1
             // 
@@ -107,7 +109,7 @@
             // 
             // BornYearDate
             // 
-            this.BornYearDate.Location = new System.Drawing.Point(16, 203);
+            this.BornYearDate.Location = new System.Drawing.Point(16, 197);
             this.BornYearDate.Name = "BornYearDate";
             this.BornYearDate.Size = new System.Drawing.Size(257, 26);
             this.BornYearDate.TabIndex = 7;
@@ -115,7 +117,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 181);
+            this.label4.Location = new System.Drawing.Point(13, 175);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 19);
             this.label4.TabIndex = 8;
@@ -124,7 +126,7 @@
             // MaleRadio
             // 
             this.MaleRadio.AutoSize = true;
-            this.MaleRadio.Location = new System.Drawing.Point(16, 254);
+            this.MaleRadio.Location = new System.Drawing.Point(16, 258);
             this.MaleRadio.Name = "MaleRadio";
             this.MaleRadio.Size = new System.Drawing.Size(41, 23);
             this.MaleRadio.TabIndex = 9;
@@ -135,7 +137,7 @@
             // FemaleRadio
             // 
             this.FemaleRadio.AutoSize = true;
-            this.FemaleRadio.Location = new System.Drawing.Point(84, 254);
+            this.FemaleRadio.Location = new System.Drawing.Point(84, 258);
             this.FemaleRadio.Name = "FemaleRadio";
             this.FemaleRadio.Size = new System.Drawing.Size(41, 23);
             this.FemaleRadio.TabIndex = 10;
@@ -146,16 +148,18 @@
             // HasKidsCheckBox
             // 
             this.HasKidsCheckBox.AutoSize = true;
-            this.HasKidsCheckBox.Location = new System.Drawing.Point(16, 293);
+            this.HasKidsCheckBox.Location = new System.Drawing.Point(16, 330);
             this.HasKidsCheckBox.Name = "HasKidsCheckBox";
             this.HasKidsCheckBox.Size = new System.Drawing.Size(93, 23);
             this.HasKidsCheckBox.TabIndex = 11;
             this.HasKidsCheckBox.Text = "Есть дети";
             this.HasKidsCheckBox.UseVisualStyleBackColor = true;
+            this.HasKidsCheckBox.CheckedChanged += new System.EventHandler(this.HasKidsCheckBox_CheckedChanged);
             // 
             // KidsAmountNumeric
             // 
-            this.KidsAmountNumeric.Location = new System.Drawing.Point(16, 346);
+            this.KidsAmountNumeric.Enabled = false;
+            this.KidsAmountNumeric.Location = new System.Drawing.Point(178, 329);
             this.KidsAmountNumeric.Name = "KidsAmountNumeric";
             this.KidsAmountNumeric.Size = new System.Drawing.Size(45, 26);
             this.KidsAmountNumeric.TabIndex = 12;
@@ -163,7 +167,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 324);
+            this.label5.Location = new System.Drawing.Point(174, 262);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 19);
             this.label5.TabIndex = 13;
@@ -183,17 +187,38 @@
             // 
             this.PositionListBox.FormattingEnabled = true;
             this.PositionListBox.ItemHeight = 19;
-            this.PositionListBox.Location = new System.Drawing.Point(324, 76);
+            this.PositionListBox.Location = new System.Drawing.Point(324, 64);
             this.PositionListBox.Name = "PositionListBox";
-            this.PositionListBox.Size = new System.Drawing.Size(257, 251);
+            this.PositionListBox.Size = new System.Drawing.Size(257, 289);
             this.PositionListBox.TabIndex = 16;
             // 
-            // Employee
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 236);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 19);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Пол";
+            // 
+            // IsMarried
+            // 
+            this.IsMarried.AutoSize = true;
+            this.IsMarried.Location = new System.Drawing.Point(16, 294);
+            this.IsMarried.Name = "IsMarried";
+            this.IsMarried.Size = new System.Drawing.Size(133, 23);
+            this.IsMarried.TabIndex = 18;
+            this.IsMarried.Text = "Женат/замужем";
+            this.IsMarried.UseVisualStyleBackColor = true;
+            // 
+            // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(610, 474);
+            this.Controls.Add(this.IsMarried);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.PositionListBox);
             this.Controls.Add(this.UnitComboBox);
             this.Controls.Add(this.label5);
@@ -209,10 +234,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.SurnameBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AddEmployeeButton);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Employee";
+            this.Name = "EmployeesForm";
             this.ShowIcon = false;
             this.Text = "Сотрудники";
             this.Load += new System.EventHandler(this.Employee_Load);
@@ -224,7 +249,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AddEmployeeButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox SurnameBox;
         private System.Windows.Forms.TextBox NameBox;
@@ -240,5 +265,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox UnitComboBox;
         private System.Windows.Forms.ListBox PositionListBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox IsMarried;
     }
 }

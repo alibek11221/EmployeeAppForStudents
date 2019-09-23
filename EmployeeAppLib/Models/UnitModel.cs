@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EmployeeAppLib.Models
 {
@@ -9,7 +10,7 @@ namespace EmployeeAppLib.Models
     {
         public int Id { get; set; }
         public string UnitName { get; set; }
-        public List<PositionModel> Positions { get; set; } = new List<PositionModel>();
-        public List<EmployeeModel> Employees { get; set; } = new List<EmployeeModel>();
+        public List<PositionModel> Positions { get; set; }
+        public List<EmployeeModel> Employees { get; set; }
     }
 }

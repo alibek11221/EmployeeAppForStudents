@@ -29,6 +29,7 @@ namespace EmployeeAppLib
         {
             cnnString = ConfigurationManager.ConnectionStrings[name].ConnectionString;
             Options =  OptionsBuilder.UseSqlServer(cnnString).Options;
+            Db = new EmployeeAppContext(Options);
         }
         
         public static void AddUnit(this UnitModel unit)
@@ -62,6 +63,24 @@ namespace EmployeeAppLib
                 Db.Payments.Add(payment);
                 Db.SaveChanges();
             }
+        }
+        public static List<UnitModel> GetAllUnitsWithEmployees(this List<UnitModel> units)
+        {
+            using(Db = new EmployeeAppContext(Options))
+            {
+                units = Db.Units
+                    .Include(u => u.Employees)
+                    .ToList();
+            }
+            return units;
+        }
+        public static List<EmployeeModel> GetEmployeeWithPosititon(this List<EmployeeModel> employees)
+        {
+            using (Db = new EmployeeAppContext(Options))
+            {
+                employees = Db.Employees.Include(e=>e.Unit).Include(e => e.Position).ToList();
+            }
+            return employees;
         }
         public static List<UnitModel> GetAllUnits(this List<UnitModel> units)
         {

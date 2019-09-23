@@ -21,6 +21,7 @@ namespace EmployeeAppUi
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             GeneralConfig.SetCnnString(CnnString);
+            GeneralConfig.GetDb();
             Application.Run(new Main());
         }
     }

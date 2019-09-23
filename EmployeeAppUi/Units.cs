@@ -14,8 +14,7 @@ namespace EmployeeAppUi
 {
     public partial class Units : Form
     {
-
-
+        public List<UnitModel> units = new List<UnitModel>().GetAllUnitsWithPositions();
         public Units()
         {
             InitializeComponent();
@@ -23,9 +22,8 @@ namespace EmployeeAppUi
         private void RefreshButton_Click(object sender, EventArgs e)
         {
             UnitsList.Items.Clear();
-            List<UnitModel> _units = new List<UnitModel>().GetAllUnitsWithPositions();
             List<PositionModel> positions;
-            foreach (UnitModel unit in _units)
+            foreach (UnitModel unit in units)
             {
                 UnitsList.Items.Add($"{unit.Id} : {unit.UnitName}\n");
                 positions = new List<PositionModel>().GetPOsitionByUnit(unit);
@@ -47,9 +45,12 @@ namespace EmployeeAppUi
         {
             if (ValidateUnitForm())
             {
-                UnitModel unit = new UnitModel();
-                unit.UnitName = UnitNameTextBox.Text;
+                UnitModel unit = new UnitModel
+                {
+                    UnitName = UnitNameTextBox.Text
+                };
                 unit.AddUnit();
+                units = units.GetAllUnitsWithPositions();
             }
             else
             {
@@ -65,9 +66,10 @@ namespace EmployeeAppUi
                 {
                     PositionName = string.Format(PositionNameBox.Text),
                     DayliSalary = int.Parse(PositionSalaryBox.Text),
-                    UnitId = UnitComboBox.SelectedIndex + 1
+                    UnitID = UnitComboBox.SelectedIndex + 1
                 };
                 position.AddPosition();
+                units = units.GetAllUnitsWithPositions();
             }
             else
             {
@@ -81,7 +83,7 @@ namespace EmployeeAppUi
                 output = false;
             if (PositionNameBox.Text == string.Empty)
                 output = false;
-            if (int.TryParse(PositionSalaryBox.Text, out _))
+            if (!int.TryParse(PositionSalaryBox.Text, out _))
                 output = false;
             return output;
         }

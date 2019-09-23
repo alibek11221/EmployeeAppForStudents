@@ -130,17 +130,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Employee.cs">
+    <Compile Include="Employees.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Employee.Designer.cs">
-      <DependentUpon>Employee.cs</DependentUpon>
+    <Compile Include="Employees.Designer.cs">
+      <DependentUpon>Employees.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentsFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentsFrom.Designer.cs">
+      <DependentUpon>PaymentsFrom.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,11 +156,14 @@
     <Compile Include="Units.Designer.cs">
       <DependentUpon>Units.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Employee.resx">
-      <DependentUpon>Employee.cs</DependentUpon>
+    <EmbeddedResource Include="Employees.resx">
+      <DependentUpon>Employees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentsFrom.resx">
+      <DependentUpon>PaymentsFrom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
