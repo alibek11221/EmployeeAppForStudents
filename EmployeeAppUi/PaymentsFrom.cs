@@ -14,24 +14,24 @@ namespace EmployeeAppUi
 {
     public partial class PaymentsFrom : Form
     {
-        public List<EmployeeModel> employees = new List<EmployeeModel>().GetEmployeeWithPosititon();
+        public List<UnitModel> units = new List<UnitModel>().GetAllUnits();
+        public List<EmployeeModel> employees { get; set; } = new List<EmployeeModel>();
+        public UnitModel unit { get; set; } = new UnitModel();
+        public EmployeeModel employee { get; set; } = new EmployeeModel();
         public PaymentsFrom()
         {
             InitializeComponent();
-            foreach (var employee in employees)
+            foreach (var unit in units)
             {
-                UnitBox.Items.Add(employee.Unit.UnitName);
-            }
-            foreach (var employee in employees)
-            {
-                EmployeesBox.Items.Add($"{employee.FullName}:{employee.Position.DayliSalary}");
+                UnitBox.Items.Add(unit.UnitName);
             }
         }
 
         private void MakePaymentButton_Click(object sender, EventArgs e)
         {
-            EmployeeModel employee = employees[EmployeesBox.SelectedIndex];
-            if (ValidatePaymenForm()) {
+            employee = employees[EmployeesBox.SelectedIndex];
+            if (ValidatePaymenForm())
+            {
                 PaymentModel payment = new PaymentModel()
                 {
                     PaymentAmount = CalculatePayment(employee),
@@ -49,7 +49,8 @@ namespace EmployeeAppUi
         {
             decimal output;
             int workdays = GetAllWorkDays(BeginnigDate.Value, EndingDate.Value);
-            output = employee.Position.DayliSalary * workdays * 0.13M ;
+            int salary = employee.Position.DayliSalary * workdays;
+            output = salary -(salary * 0.13M);
             AmountLabel.Text = $"{output.ToString()}.руб";
             return output;
         }
@@ -76,7 +77,13 @@ namespace EmployeeAppUi
 
         private void UnitBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            EmployeesBox.Items.Clear();
+            unit = units[UnitBox.SelectedIndex];
+            employees = employees.GetEmployeesWithPosititon(unit.Id);
+            foreach (var employee in employees)
+            {
+                EmployeesBox.Items.Add($"{employee.FullName}:{employee.Position.DayliSalary}");
+            }
         }
     }
 }

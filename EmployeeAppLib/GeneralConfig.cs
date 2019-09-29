@@ -74,11 +74,35 @@ namespace EmployeeAppLib
             }
             return units;
         }
-        public static List<EmployeeModel> GetEmployeeWithPosititon(this List<EmployeeModel> employees)
+        public static void RemovePosition(this PositionModel position)
         {
             using (Db = new EmployeeAppContext(Options))
             {
-                employees = Db.Employees.Include(e=>e.Unit).Include(e => e.Position).ToList();
+                Db.Positions.Remove(position);
+                Db.SaveChanges();
+            }
+        }
+        public static void RemoveUnit(this UnitModel unit)
+        {
+            using (Db = new EmployeeAppContext(Options))
+            {
+                Db.Units.Remove(unit);
+                Db.SaveChanges();
+            }
+        }
+        public static void RemoveEmployee(this EmployeeModel model)
+        {
+            using (Db = new EmployeeAppContext(Options))
+            {
+                Db.Employees.Remove(model);
+                Db.SaveChanges();
+            }
+        }
+        public static List<EmployeeModel> GetEmployeesWithPosititon(this List<EmployeeModel> employees, int id)
+        {
+            using (Db = new EmployeeAppContext(Options))
+            {
+                employees = Db.Employees.Where(e => e.UnitId == id).Include(e => e.Position).ToList();
             }
             return employees;
         }

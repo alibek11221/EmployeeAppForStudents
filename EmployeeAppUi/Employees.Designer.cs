@@ -126,7 +126,7 @@
             // MaleRadio
             // 
             this.MaleRadio.AutoSize = true;
-            this.MaleRadio.Location = new System.Drawing.Point(16, 258);
+            this.MaleRadio.Location = new System.Drawing.Point(16, 270);
             this.MaleRadio.Name = "MaleRadio";
             this.MaleRadio.Size = new System.Drawing.Size(41, 23);
             this.MaleRadio.TabIndex = 9;
@@ -137,7 +137,7 @@
             // FemaleRadio
             // 
             this.FemaleRadio.AutoSize = true;
-            this.FemaleRadio.Location = new System.Drawing.Point(84, 258);
+            this.FemaleRadio.Location = new System.Drawing.Point(84, 270);
             this.FemaleRadio.Name = "FemaleRadio";
             this.FemaleRadio.Size = new System.Drawing.Size(41, 23);
             this.FemaleRadio.TabIndex = 10;
@@ -148,7 +148,7 @@
             // HasKidsCheckBox
             // 
             this.HasKidsCheckBox.AutoSize = true;
-            this.HasKidsCheckBox.Location = new System.Drawing.Point(16, 330);
+            this.HasKidsCheckBox.Location = new System.Drawing.Point(178, 330);
             this.HasKidsCheckBox.Name = "HasKidsCheckBox";
             this.HasKidsCheckBox.Size = new System.Drawing.Size(93, 23);
             this.HasKidsCheckBox.TabIndex = 11;
@@ -159,7 +159,7 @@
             // KidsAmountNumeric
             // 
             this.KidsAmountNumeric.Enabled = false;
-            this.KidsAmountNumeric.Location = new System.Drawing.Point(178, 329);
+            this.KidsAmountNumeric.Location = new System.Drawing.Point(178, 270);
             this.KidsAmountNumeric.Name = "KidsAmountNumeric";
             this.KidsAmountNumeric.Size = new System.Drawing.Size(45, 26);
             this.KidsAmountNumeric.TabIndex = 12;
@@ -167,7 +167,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(174, 262);
+            this.label5.Location = new System.Drawing.Point(174, 248);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 19);
             this.label5.TabIndex = 13;
@@ -195,7 +195,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 236);
+            this.label6.Location = new System.Drawing.Point(12, 248);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 19);
             this.label6.TabIndex = 17;
@@ -204,7 +204,7 @@
             // IsMarried
             // 
             this.IsMarried.AutoSize = true;
-            this.IsMarried.Location = new System.Drawing.Point(16, 294);
+            this.IsMarried.Location = new System.Drawing.Point(16, 330);
             this.IsMarried.Name = "IsMarried";
             this.IsMarried.Size = new System.Drawing.Size(133, 23);
             this.IsMarried.TabIndex = 18;

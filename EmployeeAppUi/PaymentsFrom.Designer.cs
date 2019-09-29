@@ -41,6 +41,8 @@
             // 
             // UnitBox
             // 
+            this.UnitBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.UnitBox.FormattingEnabled = true;
             this.UnitBox.Location = new System.Drawing.Point(28, 36);
             this.UnitBox.Name = "UnitBox";
@@ -50,6 +52,8 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(24, 14);
             this.label1.Name = "label1";
@@ -59,6 +63,8 @@
             // 
             // EmployeesBox
             // 
+            this.EmployeesBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.EmployeesBox.FormattingEnabled = true;
             this.EmployeesBox.ItemHeight = 19;
             this.EmployeesBox.Location = new System.Drawing.Point(28, 86);
@@ -68,6 +74,8 @@
             // 
             // BeginnigDate
             // 
+            this.BeginnigDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BeginnigDate.Location = new System.Drawing.Point(28, 306);
             this.BeginnigDate.Name = "BeginnigDate";
             this.BeginnigDate.Size = new System.Drawing.Size(290, 26);
@@ -75,6 +83,8 @@
             // 
             // EndingDate
             // 
+            this.EndingDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.EndingDate.Location = new System.Drawing.Point(28, 373);
             this.EndingDate.Name = "EndingDate";
             this.EndingDate.Size = new System.Drawing.Size(290, 26);
@@ -82,6 +92,8 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(24, 284);
             this.label2.Name = "label2";
@@ -91,6 +103,8 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(24, 351);
             this.label3.Name = "label3";
@@ -100,16 +114,19 @@
             // 
             // AmountLabel
             // 
+            this.AmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AmountLabel.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AmountLabel.Location = new System.Drawing.Point(28, 432);
             this.AmountLabel.Name = "AmountLabel";
             this.AmountLabel.Size = new System.Drawing.Size(290, 46);
             this.AmountLabel.TabIndex = 7;
-            this.AmountLabel.Text = "asdf";
             this.AmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MakePaymentButton
             // 
+            this.MakePaymentButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MakePaymentButton.Location = new System.Drawing.Point(28, 521);
             this.MakePaymentButton.Name = "MakePaymentButton";
             this.MakePaymentButton.Size = new System.Drawing.Size(290, 46);
