@@ -30,9 +30,12 @@ namespace EmployeeAppUi
         private void UnitComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PositionListBox.Items.Clear();
-            foreach (var postition in units[UnitComboBox.SelectedIndex].Positions)
-            {
-                PositionListBox.Items.Add(postition.PositionName);
+            if (UnitComboBox.SelectedIndex != -1)
+            { 
+                foreach (var postition in units[UnitComboBox.SelectedIndex].Positions)
+                {
+                    PositionListBox.Items.Add(postition.PositionName);
+                }
             }
         }
         private bool ValidateEmployeeForm()

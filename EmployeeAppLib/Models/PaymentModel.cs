@@ -14,7 +14,6 @@ namespace EmployeeAppLib.Models
         public DateTime PaymentDate { get; set; }
         public decimal PaymentAmount { get; set; }
         public int EmployeeId { get; set; }
-
         public EmployeeModel Employee { get; set; }
     }
 }

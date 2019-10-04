@@ -33,7 +33,7 @@ namespace EmployeeLib.Sql
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<EmployeeModel>()
                 .HasOne(p => p.Position)
-                .WithOne(e => e.Employee)
+                .WithMany(e => e.Employee)
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<EmployeeModel>()
                 .HasMany(e => e.Payments)

@@ -20,9 +20,5 @@ namespace EmployeeAppLib.Models
         public UnitModel Unit { get; set; }
         public PositionModel Position { get; set; }
         public List<PaymentModel> Payments { get; set; }
-        public EmployeeModel()
-        {
-
-        }
     }
 }

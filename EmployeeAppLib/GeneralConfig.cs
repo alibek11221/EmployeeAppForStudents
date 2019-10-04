@@ -28,7 +28,7 @@ namespace EmployeeAppLib
         public static void SetCnnString(string name)
         {
             cnnString = ConfigurationManager.ConnectionStrings[name].ConnectionString;
-            Options =  OptionsBuilder.UseSqlServer(cnnString).Options;
+            Options = OptionsBuilder.UseSqlServer(cnnString).Options;
             Db = new EmployeeAppContext(Options);
         }
         
