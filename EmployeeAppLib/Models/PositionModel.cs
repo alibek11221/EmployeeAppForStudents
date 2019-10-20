@@ -13,6 +13,6 @@ namespace EmployeeAppLib.Models
         public int DayliSalary { get; set; }
         public int UnitID { get; set; }
         public UnitModel Unit { get; set; }
-        public List<EmployeeModel> Employee { get; set; }
+        public EmployeeModel Employee { get; set; }
     }
 }

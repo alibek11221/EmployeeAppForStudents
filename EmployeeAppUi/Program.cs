@@ -13,15 +13,14 @@ namespace EmployeeAppUi
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
+        private const string CnnString = "EmployeeCnn";
 
         [STAThread]
         static void Main()
         {
-            const string CnnString = "EmployeeCnn";
+            GeneralConfig.SetCnnString(CnnString);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            GeneralConfig.SetCnnString(CnnString);
-            GeneralConfig.GetDb();
             Application.Run(new Main());
         }
     }

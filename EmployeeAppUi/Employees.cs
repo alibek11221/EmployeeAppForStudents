@@ -1,5 +1,6 @@
 ﻿using EmployeeAppLib;
 using EmployeeAppLib.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,8 +55,7 @@ namespace EmployeeAppUi
 
         private void AddEmployeeButton_Click(object sender, EventArgs e)
         {
-            try
-            {
+            try{
                 if (ValidateEmployeeForm())
                 {
                     UnitModel unit = units[UnitComboBox.SelectedIndex];
@@ -77,9 +77,9 @@ namespace EmployeeAppUi
                     MessageBox.Show("Заполнены не все поля формы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch
+            catch(DbUpdateException) 
             {
-                MessageBox.Show("Сотруник с такой должностью уже записан в базу", "Должность занята", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Сотрудник с такой должностью уже числится в базе", "Должность уже занята", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

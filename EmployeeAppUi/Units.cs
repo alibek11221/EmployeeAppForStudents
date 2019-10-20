@@ -26,7 +26,7 @@ namespace EmployeeAppUi
             foreach (UnitModel unit in units)
             {
                 UnitsList.Items.Add($"{unit.Id} : {unit.UnitName}\n");
-                positions = new List<PositionModel>().GetPOsitionByUnit(unit);
+                positions = new List<PositionModel>().GetPositionByUnit(unit);
                 foreach (PositionModel position in positions)
                 {
                     UnitsList.Items.Add($"\t{position.PositionName}");

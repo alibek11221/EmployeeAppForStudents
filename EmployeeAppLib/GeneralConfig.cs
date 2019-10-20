@@ -14,17 +14,9 @@ namespace EmployeeAppLib
     {
         private static string cnnString;
         private static EmployeeAppContext Db;
-        private static DbContextOptionsBuilder<EmployeeAppContext> OptionsBuilder = new DbContextOptionsBuilder<EmployeeAppContext>();
+        private static readonly DbContextOptionsBuilder<EmployeeAppContext> OptionsBuilder = new DbContextOptionsBuilder<EmployeeAppContext>();
         private static DbContextOptions<EmployeeAppContext> Options;
-        public static EmployeeAppContext GetDb()
-        {
-            return Db;
-        }
-        public static string GetCnnString()
-        {
-            return cnnString;
-        }
-
+        
         public static void SetCnnString(string name)
         {
             cnnString = ConfigurationManager.ConnectionStrings[name].ConnectionString;
@@ -36,7 +28,9 @@ namespace EmployeeAppLib
         {
             using (Db = new EmployeeAppContext(Options))
             {
+                //Добавить в список отделов
                 Db.Units.Add(unit);
+                //Сохранить изменения
                 Db.SaveChanges();
             }
         }
@@ -44,7 +38,9 @@ namespace EmployeeAppLib
         {
             using(Db = new EmployeeAppContext(Options))
             {
+                //Добавить в список сотрудников
                 Db.Employees.Add(employee);
+                //Сохранить изменения
                 Db.SaveChanges();
             }
         }
@@ -52,7 +48,9 @@ namespace EmployeeAppLib
         {
             using(Db = new EmployeeAppContext(Options))
             {
+                //Добавить в список должностей
                 Db.Positions.Add(position);
+                //Сохранить изменения
                 Db.SaveChanges();
             }
         }
@@ -64,40 +62,13 @@ namespace EmployeeAppLib
                 Db.SaveChanges();
             }
         }
-        public static List<UnitModel> GetAllUnitsWithEmployees(this List<UnitModel> units)
-        {
-            using(Db = new EmployeeAppContext(Options))
-            {
-                units = Db.Units
-                    .Include(u => u.Employees)
-                    .ToList();
-            }
-            return units;
-        }
-        public static void RemovePosition(this PositionModel position)
-        {
-            using (Db = new EmployeeAppContext(Options))
-            {
-                Db.Positions.Remove(position);
-                Db.SaveChanges();
-            }
-        }
-        public static void RemoveUnit(this UnitModel unit)
-        {
-            using (Db = new EmployeeAppContext(Options))
-            {
-                Db.Units.Remove(unit);
-                Db.SaveChanges();
-            }
-        }
-        public static void RemoveEmployee(this EmployeeModel model)
-        {
-            using (Db = new EmployeeAppContext(Options))
-            {
-                Db.Employees.Remove(model);
-                Db.SaveChanges();
-            }
-        }
+
+        /// <summary>
+        /// Метод для получения сотрудников конкретного отдела с данными о его должности
+        /// </summary>
+        /// <param name="employees">Контейнер</param>
+        /// <param name="id">Id отдела в базе данных</param>
+        /// <returns>Контейнер заполненный данными из базы данных</returns>
         public static List<EmployeeModel> GetEmployeesWithPosititon(this List<EmployeeModel> employees, int id)
         {
             using (Db = new EmployeeAppContext(Options))
@@ -106,6 +77,12 @@ namespace EmployeeAppLib
             }
             return employees;
         }
+
+        /// <summary>
+        /// Метод для получения списка отделов из базы и сохранения их в контейнере
+        /// </summary>
+        /// <param name="units">Пустой контейнер</param>
+        /// <returns>Контейнер заполненный данными из базы данных</returns>
         public static List<UnitModel> GetAllUnits(this List<UnitModel> units)
         {
             using (Db = new EmployeeAppContext(Options))
@@ -114,6 +91,11 @@ namespace EmployeeAppLib
             }
             return units;
         }
+        /// <summary>
+        /// Метод для получения списка отделов с должностями из базы и сохранения их в контейнере
+        /// </summary>
+        /// <param name="units">Пустой контейнер</param>
+        /// <returns>Контейнер заполненный данными из базы данных</returns>
         public static List<UnitModel> GetAllUnitsWithPositions(this List<UnitModel> units)
         {
             using (Db = new EmployeeAppContext(Options))
@@ -122,42 +104,20 @@ namespace EmployeeAppLib
             }
             return units;
         }
-        public static List<PositionModel> GetAllPositions(this List<PositionModel> positions)
+
+        /// <summary>
+        /// Метод для получения списка должностей для конкретного отдела из базы и сохранения их в контейнере
+        /// </summary>
+        /// <param name="positions">Контейнер для списка должностей</param>
+        /// <param name="unit">Конкретный отдел</param>
+        /// <returns>Контейнер заполненный данными из базы данных</returns>
+        public static List<PositionModel> GetPositionByUnit(this List<PositionModel> positions, UnitModel unit)
         {
             using(Db = new EmployeeAppContext(Options))
             {
-                foreach (PositionModel position in Db.Positions)
+                foreach (PositionModel position in unit.Positions)
                 {
                     positions.Add(position);
-                }
-            }
-            return positions;
-        }
-        public static List<EmployeeModel> GetAllEmployees(this List<EmployeeModel> employees)
-        {
-            using(Db = new EmployeeAppContext(Options))
-            {
-                foreach (EmployeeModel employee in Db.Employees)
-                {
-                    employees.Add(employee);
-                }
-            }
-            return employees;
-        }
-        public static List<PaymentModel> GetAllPayments(this List<PaymentModel> payments)
-        {
-            using(Db = new EmployeeAppContext(Options))
-            {
-                return Db.Payments.ToList();
-            }
-        }
-        public static List<PositionModel> GetPOsitionByUnit(this List<PositionModel> positions, UnitModel unit)
-        {
-            using(Db = new EmployeeAppContext(Options))
-            {
-                foreach (PositionModel _position in unit.Positions)
-                {
-                    positions.Add(_position);
                 }
             }
             return positions;

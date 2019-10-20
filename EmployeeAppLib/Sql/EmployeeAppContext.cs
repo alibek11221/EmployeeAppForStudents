@@ -33,14 +33,13 @@ namespace EmployeeLib.Sql
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<EmployeeModel>()
                 .HasOne(p => p.Position)
-                .WithMany(e => e.Employee)
+                .WithOne(e => e.Employee)
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<EmployeeModel>()
                 .HasMany(e => e.Payments)
                 .WithOne(p => p.Employee)
                 .HasForeignKey(p => p.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade);
-
         }
     }
 }
