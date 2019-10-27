@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,10 +15,18 @@ namespace EmployeeAppUi
 {
     public partial class Units : Form
     {
-        public List<UnitModel> units = new List<UnitModel>().GetAllUnitsWithPositions();
+        public List<UnitModel> units;
+        private async Task Itnitialize()
+        {
+            if (units == null)
+            {
+                units = await new List<UnitModel>().GetAllUnitsWithPositions();
+            }
+        }
         public Units()
         {
             InitializeComponent();
+
         }
         private void RefreshButton_Click(object sender, EventArgs e)
         {
@@ -41,7 +50,7 @@ namespace EmployeeAppUi
             return output;
         }
 
-        private void AddUnitButton_Click(object sender, EventArgs e)
+        private async void AddUnitButton_Click(object sender, EventArgs e)
         {
             if (ValidateUnitForm())
             {
@@ -50,7 +59,7 @@ namespace EmployeeAppUi
                     UnitName = UnitNameTextBox.Text
                 };
                 unit.AddUnit();
-                units = units.GetAllUnitsWithPositions();
+                units = await units.GetAllUnitsWithPositions();
             }
             else
             {
@@ -58,7 +67,7 @@ namespace EmployeeAppUi
             }
         }
 
-        private void AddPositionButton_Click(object sender, EventArgs e)
+        private async void AddPositionButton_Click(object sender, EventArgs e)
         {
             if (ValidatePostion())
             {
@@ -69,7 +78,7 @@ namespace EmployeeAppUi
                     UnitID = UnitComboBox.SelectedIndex + 1
                 };
                 position.AddPosition();
-                units = units.GetAllUnitsWithPositions();
+                units = await units.GetAllUnitsWithPositions();
             }
             else
             {
@@ -87,11 +96,10 @@ namespace EmployeeAppUi
                 output = false;
             return output;
         }
-        private void UnitComboBox_DropDown(object sender, EventArgs e)
+        private async void UnitComboBox_DropDown(object sender, EventArgs e)
         {
             UnitComboBox.Items.Clear();
-            List<UnitModel> units;
-            units = new List<UnitModel>().GetAllUnits();
+            await Itnitialize();
             foreach (UnitModel unit in units)
             {
                 UnitComboBox.Items.Add($"{unit.UnitName}");
@@ -103,9 +111,9 @@ namespace EmployeeAppUi
             
         }
 
-        private void Units_Load(object sender, EventArgs e)
+        private async void Units_Load(object sender, EventArgs e)
         {
-         
+            await Itnitialize();
         }
     }
 }

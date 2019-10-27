@@ -21,9 +21,10 @@ namespace EmployeeAppUi
 
         private void UnitsButton_Click(object sender, EventArgs e)
         {
-            Units unit = new Units();
-            unit.ShowDialog();
-            unit.Dispose();
+            using (Units units = new Units())
+            {
+                units.ShowDialog();
+            }
         }
 
         private void PaymentsButton_Click(object sender, EventArgs e)

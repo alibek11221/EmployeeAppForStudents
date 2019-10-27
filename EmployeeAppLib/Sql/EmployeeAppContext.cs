@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using EmployeeAppLib.Models;
 
-namespace EmployeeLib.Sql
+namespace EmployeeAppLib.Sql
 {
     public class EmployeeAppContext : DbContext
     {
@@ -17,7 +17,7 @@ namespace EmployeeLib.Sql
         public  EmployeeAppContext(DbContextOptions<EmployeeAppContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+             Database.EnsureCreated();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

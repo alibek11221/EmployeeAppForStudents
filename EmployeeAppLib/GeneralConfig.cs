@@ -1,5 +1,5 @@
 ﻿using EmployeeAppLib.Models;
-using EmployeeLib.Sql;
+using EmployeeAppLib.Sql;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -29,9 +29,9 @@ namespace EmployeeAppLib
             using (Db = new EmployeeAppContext(Options))
             {
                 //Добавить в список отделов
-                Db.Units.Add(unit);
+                 Db.Units.Add(unit);
                 //Сохранить изменения
-                Db.SaveChanges();
+                 Db.SaveChanges();
             }
         }
         public static void AddEmployee(this EmployeeModel employee)
@@ -96,13 +96,14 @@ namespace EmployeeAppLib
         /// </summary>
         /// <param name="units">Пустой контейнер</param>
         /// <returns>Контейнер заполненный данными из базы данных</returns>
-        public static List<UnitModel> GetAllUnitsWithPositions(this List<UnitModel> units)
+        public static async Task<List<UnitModel>> GetAllUnitsWithPositions(this List<UnitModel> output)
         {
+             //= new List<UnitModel>();
             using (Db = new EmployeeAppContext(Options))
             {
-                units = Db.Units.Include(u => u.Positions).ToList();
+                 output = await Db.Units.Include(u => u.Positions).ToListAsync();
             }
-            return units;
+            return output;
         }
 
         /// <summary>

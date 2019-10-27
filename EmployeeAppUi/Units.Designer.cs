@@ -81,7 +81,7 @@
             this.UnitNameTextBox.Location = new System.Drawing.Point(17, 262);
             this.UnitNameTextBox.Name = "UnitNameTextBox";
             this.UnitNameTextBox.Size = new System.Drawing.Size(299, 29);
-            this.UnitNameTextBox.TabIndex = 4;
+            this.UnitNameTextBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -97,7 +97,7 @@
             this.AddPositionButton.Location = new System.Drawing.Point(10, 326);
             this.AddPositionButton.Name = "AddPositionButton";
             this.AddPositionButton.Size = new System.Drawing.Size(295, 34);
-            this.AddPositionButton.TabIndex = 6;
+            this.AddPositionButton.TabIndex = 7;
             this.AddPositionButton.Text = "Добавить должность";
             this.AddPositionButton.UseVisualStyleBackColor = true;
             this.AddPositionButton.Click += new System.EventHandler(this.AddPositionButton_Click);
@@ -137,7 +137,7 @@
             this.PositionSalaryBox.Location = new System.Drawing.Point(6, 229);
             this.PositionSalaryBox.Name = "PositionSalaryBox";
             this.PositionSalaryBox.Size = new System.Drawing.Size(299, 26);
-            this.PositionSalaryBox.TabIndex = 12;
+            this.PositionSalaryBox.TabIndex = 6;
             // 
             // label4
             // 
@@ -153,7 +153,7 @@
             this.PositionNameBox.Location = new System.Drawing.Point(6, 143);
             this.PositionNameBox.Name = "PositionNameBox";
             this.PositionNameBox.Size = new System.Drawing.Size(299, 26);
-            this.PositionNameBox.TabIndex = 10;
+            this.PositionNameBox.TabIndex = 5;
             // 
             // label3
             // 
@@ -179,7 +179,7 @@
             this.UnitComboBox.Location = new System.Drawing.Point(6, 59);
             this.UnitComboBox.Name = "UnitComboBox";
             this.UnitComboBox.Size = new System.Drawing.Size(299, 27);
-            this.UnitComboBox.TabIndex = 7;
+            this.UnitComboBox.TabIndex = 4;
             this.UnitComboBox.Text = "Выберите отдел";
             this.UnitComboBox.DropDown += new System.EventHandler(this.UnitComboBox_DropDown);
             this.UnitComboBox.Enter += new System.EventHandler(this.UnitComboBox_Enter);
