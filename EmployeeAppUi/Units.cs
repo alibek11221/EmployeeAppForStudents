@@ -16,11 +16,11 @@ namespace EmployeeAppUi
     public partial class Units : Form
     {
         public List<UnitModel> units;
-        private async Task Itnitialize()
+        private void Itnitialize()
         {
             if (units == null)
             {
-                units = await new List<UnitModel>().GetAllUnitsWithPositions();
+                units =  new List<UnitModel>().GetAllUnitsWithPositions();
             }
         }
         public Units()
@@ -50,7 +50,7 @@ namespace EmployeeAppUi
             return output;
         }
 
-        private async void AddUnitButton_Click(object sender, EventArgs e)
+        private void AddUnitButton_Click(object sender, EventArgs e)
         {
             if (ValidateUnitForm())
             {
@@ -59,7 +59,7 @@ namespace EmployeeAppUi
                     UnitName = UnitNameTextBox.Text
                 };
                 unit.AddUnit();
-                units = await units.GetAllUnitsWithPositions();
+                units =  units.GetAllUnitsWithPositions();
             }
             else
             {
@@ -67,7 +67,7 @@ namespace EmployeeAppUi
             }
         }
 
-        private async void AddPositionButton_Click(object sender, EventArgs e)
+        private void AddPositionButton_Click(object sender, EventArgs e)
         {
             if (ValidatePostion())
             {
@@ -78,7 +78,7 @@ namespace EmployeeAppUi
                     UnitID = UnitComboBox.SelectedIndex + 1
                 };
                 position.AddPosition();
-                units = await units.GetAllUnitsWithPositions();
+                units =  units.GetAllUnitsWithPositions();
             }
             else
             {
@@ -96,10 +96,10 @@ namespace EmployeeAppUi
                 output = false;
             return output;
         }
-        private async void UnitComboBox_DropDown(object sender, EventArgs e)
+        private  void UnitComboBox_DropDown(object sender, EventArgs e)
         {
             UnitComboBox.Items.Clear();
-            await Itnitialize();
+             Itnitialize();
             foreach (UnitModel unit in units)
             {
                 UnitComboBox.Items.Add($"{unit.UnitName}");
@@ -111,9 +111,9 @@ namespace EmployeeAppUi
             
         }
 
-        private async void Units_Load(object sender, EventArgs e)
+        private void Units_Load(object sender, EventArgs e)
         {
-            await Itnitialize();
+             Itnitialize();
         }
     }
 }

@@ -16,18 +16,18 @@ namespace EmployeeAppUi
     public partial class EmployeesForm : Form
     {
         public List<UnitModel> units;
-        private async Task Itnitialize()
+        private void Itnitialize()
         {
-            units = await new List<UnitModel>().GetAllUnitsWithPositions();
+            units =  new List<UnitModel>().GetAllUnitsWithPositions();
         }
         public EmployeesForm()
         {
             InitializeComponent();
         }
 
-        private async void Employee_Load(object sender, EventArgs e)
+        private void Employee_Load(object sender, EventArgs e)
         {
-            await Itnitialize();
+             Itnitialize();
             foreach (var unit in units)
             {
                 UnitComboBox.Items.Add(unit.UnitName);

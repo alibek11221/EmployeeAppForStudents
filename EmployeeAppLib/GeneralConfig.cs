@@ -96,12 +96,12 @@ namespace EmployeeAppLib
         /// </summary>
         /// <param name="units">Пустой контейнер</param>
         /// <returns>Контейнер заполненный данными из базы данных</returns>
-        public static async Task<List<UnitModel>> GetAllUnitsWithPositions(this List<UnitModel> output)
+        public static List<UnitModel> GetAllUnitsWithPositions(this List<UnitModel> output)
         {
              //= new List<UnitModel>();
             using (Db = new EmployeeAppContext(Options))
             {
-                 output = await Db.Units.Include(u => u.Positions).ToListAsync();
+                 output =  Db.Units.Include(u => u.Positions).ToList();
             }
             return output;
         }
