@@ -29,7 +29,7 @@ namespace EmployeeAppLib.Sql
             modelBuilder.Entity<UnitModel>()
                 .HasMany(u => u.Positions)
                 .WithOne(p => p.Unit)
-                .HasForeignKey(k => k.UnitID)
+                .HasForeignKey(k => k.UnitId)
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<EmployeeModel>()
                 .HasOne(p => p.Position)

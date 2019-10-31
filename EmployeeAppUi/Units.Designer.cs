@@ -180,9 +180,7 @@
             this.UnitComboBox.Name = "UnitComboBox";
             this.UnitComboBox.Size = new System.Drawing.Size(299, 27);
             this.UnitComboBox.TabIndex = 4;
-            this.UnitComboBox.Text = "Выберите отдел";
             this.UnitComboBox.DropDown += new System.EventHandler(this.UnitComboBox_DropDown);
-            this.UnitComboBox.Enter += new System.EventHandler(this.UnitComboBox_Enter);
             // 
             // Units
             // 
@@ -196,7 +194,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Units";
             this.Text = "Units";
-            this.Load += new System.EventHandler(this.Units_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

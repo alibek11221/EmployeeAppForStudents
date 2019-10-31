@@ -11,7 +11,7 @@ namespace EmployeeAppLib.Models
         public int Id { get; set; }
         public string PositionName { get; set; }
         public int DayliSalary { get; set; }
-        public int UnitID { get; set; }
+        public int UnitId { get; set; }
         public UnitModel Unit { get; set; }
         public EmployeeModel Employee { get; set; }
     }
