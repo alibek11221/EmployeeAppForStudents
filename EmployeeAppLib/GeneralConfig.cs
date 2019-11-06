@@ -24,14 +24,11 @@ namespace EmployeeAppLib
             Db = new EmployeeAppContext(Options);
         }
         
-        public static void AddUnit(this UnitModel unit)
+        public static void Add<T>(T data) where T : DbSet<T>
         {
             using (Db = new EmployeeAppContext(Options))
             {
-                //Добавить в список отделов
-                 Db.Units.Add(unit);
-                //Сохранить изменения
-                 Db.SaveChanges();
+                Db.
             }
         }
         public static void AddEmployee(this EmployeeModel employee)
