@@ -28,9 +28,7 @@ namespace EmployeeAppLib
         {
             using(Db = new EmployeeAppContext(Options))
             {
-                //Добавить в список сотрудников
                 await Db.Employees.AddAsync(employee);
-                //Сохранить изменения
                 await Db.SaveChangesAsync();
             }
         }
@@ -38,9 +36,7 @@ namespace EmployeeAppLib
         {
             using (Db = new EmployeeAppContext(Options))
             {
-                //Добавить в список должностей
                 await Db.Units.AddAsync(unit);
-                //Сохранить изменения
                 await Db.SaveChangesAsync();
             }
         }
@@ -48,9 +44,7 @@ namespace EmployeeAppLib
         {
             using(Db = new EmployeeAppContext(Options))
             {
-                //Добавить в список должностей
                 await Db.Positions.AddAsync(position);
-                //Сохранить изменения
                 await Db.SaveChangesAsync();
             }
         }
@@ -63,12 +57,6 @@ namespace EmployeeAppLib
             }
         }
 
-        /// <summary>
-        /// Метод для получения сотрудников конкретного отдела с данными о его должности
-        /// </summary>
-        /// <param name="employees">Контейнер</param>
-        /// <param name="id">Id отдела в базе данных</param>
-        /// <returns>Контейнер заполненный данными из базы данных</returns>
         public async static Task<List<EmployeeModel>> GetEmployeesWithPosititon(this List<EmployeeModel> employees, int id)
         {
             using (Db = new EmployeeAppContext(Options))
@@ -78,11 +66,6 @@ namespace EmployeeAppLib
             return employees;
         }
 
-        /// <summary>
-        /// Метод для получения списка отделов из базы и сохранения их в контейнере
-        /// </summary>
-        /// <param name="units">Пустой контейнер</param>
-        /// <returns>Контейнер заполненный данными из базы данных</returns>
         public async static Task<List<UnitModel>> GetAllUnits(this List<UnitModel> units)
         {
             using (Db = new EmployeeAppContext(Options))
@@ -91,11 +74,7 @@ namespace EmployeeAppLib
             }
             return units;
         }
-        /// <summary>
-        /// Метод для получения списка отделов с должностями из базы и сохранения их в контейнере
-        /// </summary>
-        /// <param name="units">Пустой контейнер</param>
-        /// <returns>Контейнер заполненный данными из базы данных</returns>
+       
         public async static Task<List<UnitModel>> GetAllUnitsWithPositions(this List<UnitModel> output)
         {
              //= new List<UnitModel>();
@@ -106,12 +85,6 @@ namespace EmployeeAppLib
             return output;
         }
 
-        /// <summary>
-        /// Метод для получения списка должностей для конкретного отдела из базы и сохранения их в контейнере
-        /// </summary>
-        /// <param name="positions">Контейнер для списка должностей</param>
-        /// <param name="unit">Конкретный отдел</param>
-        /// <returns>Контейнер заполненный данными из базы данных</returns>
         public static List<PositionModel> GetPositionByUnit(this List<PositionModel> positions, UnitModel unit)
         {
             using(Db = new EmployeeAppContext(Options))
