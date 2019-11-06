@@ -16,9 +16,14 @@ namespace EmployeeAppUi
     public partial class EmployeesForm : Form
     {
         public List<UnitModel> units;
-        private void Itnitialize()
+        private async void Itnitialize()
         {
-            units =  new List<UnitModel>().GetAllUnitsWithPositions();
+            units = await new List<UnitModel>().GetAllUnitsWithPositions();
+            foreach (var unit in units)
+            {
+                UnitComboBox.Items.Add(unit.UnitName);
+            }
+
         }
         public EmployeesForm()
         {
@@ -28,10 +33,7 @@ namespace EmployeeAppUi
         private void Employee_Load(object sender, EventArgs e)
         {
              Itnitialize();
-            foreach (var unit in units)
-            {
-                UnitComboBox.Items.Add(unit.UnitName);
-            }
+            
         }
         private void UnitComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -58,7 +60,7 @@ namespace EmployeeAppUi
             return output;
         }
 
-        private void AddEmployeeButton_Click(object sender, EventArgs e)
+        private async void AddEmployeeButton_Click(object sender, EventArgs e)
         {
             try{
                 if (ValidateEmployeeForm())
@@ -74,7 +76,7 @@ namespace EmployeeAppUi
                     employee.AmountOfKids = Convert.ToInt32(KidsAmountNumeric.Value);
                     employee.UnitId = unit.Id;
                     employee.PositionId = position.Id;
-                    employee.AddEmployee();
+                    await employee.AddEmployee();
                     JobDone();
                 }
                 else

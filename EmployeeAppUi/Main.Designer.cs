@@ -31,6 +31,7 @@
             this.UnitsButton = new System.Windows.Forms.Button();
             this.EmployeesButton = new System.Windows.Forms.Button();
             this.PaymentsButton = new System.Windows.Forms.Button();
+            this.ShowBaseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // UnitsButton
@@ -63,12 +64,23 @@
             this.PaymentsButton.UseVisualStyleBackColor = true;
             this.PaymentsButton.Click += new System.EventHandler(this.PaymentsButton_Click);
             // 
+            // ShowBaseButton
+            // 
+            this.ShowBaseButton.Location = new System.Drawing.Point(12, 263);
+            this.ShowBaseButton.Name = "ShowBaseButton";
+            this.ShowBaseButton.Size = new System.Drawing.Size(328, 52);
+            this.ShowBaseButton.TabIndex = 2;
+            this.ShowBaseButton.Text = "База";
+            this.ShowBaseButton.UseVisualStyleBackColor = true;
+            this.ShowBaseButton.Click += new System.EventHandler(this.ShowBaseButton_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(357, 276);
+            this.ClientSize = new System.Drawing.Size(356, 359);
+            this.Controls.Add(this.ShowBaseButton);
             this.Controls.Add(this.PaymentsButton);
             this.Controls.Add(this.EmployeesButton);
             this.Controls.Add(this.UnitsButton);
@@ -87,6 +99,7 @@
         private System.Windows.Forms.Button UnitsButton;
         private System.Windows.Forms.Button EmployeesButton;
         private System.Windows.Forms.Button PaymentsButton;
+        private System.Windows.Forms.Button ShowBaseButton;
     }
 }
 

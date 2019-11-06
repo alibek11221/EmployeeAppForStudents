@@ -23,40 +23,43 @@ namespace EmployeeAppLib
             Options = OptionsBuilder.UseSqlServer(cnnString).Options;
             Db = new EmployeeAppContext(Options);
         }
-        
-        public static void Add<T>(T data) where T : DbSet<T>
-        {
-            using (Db = new EmployeeAppContext(Options))
-            {
-                Db.
-            }
-        }
-        public static void AddEmployee(this EmployeeModel employee)
+
+        public async static Task AddEmployee(this EmployeeModel employee)
         {
             using(Db = new EmployeeAppContext(Options))
             {
                 //Добавить в список сотрудников
-                Db.Employees.Add(employee);
+                await Db.Employees.AddAsync(employee);
                 //Сохранить изменения
-                Db.SaveChanges();
+                await Db.SaveChangesAsync();
             }
         }
-        public static void AddPosition(this PositionModel position)
+        public async static Task AddUnit(this UnitModel unit)
+        {
+            using (Db = new EmployeeAppContext(Options))
+            {
+                //Добавить в список должностей
+                await Db.Units.AddAsync(unit);
+                //Сохранить изменения
+                await Db.SaveChangesAsync();
+            }
+        }
+        public async static Task AddPosition(this PositionModel position)
         {
             using(Db = new EmployeeAppContext(Options))
             {
                 //Добавить в список должностей
-                Db.Positions.Add(position);
+                await Db.Positions.AddAsync(position);
                 //Сохранить изменения
-                Db.SaveChanges();
+                await Db.SaveChangesAsync();
             }
         }
-        public static void AddPayment(this PaymentModel payment)
+        public async static Task AddPayment(this PaymentModel payment)
         {
             using(Db = new EmployeeAppContext(Options))
             {
-                Db.Payments.Add(payment);
-                Db.SaveChanges();
+                await  Db.Payments.AddAsync(payment);
+                await Db.SaveChangesAsync();
             }
         }
 
@@ -66,11 +69,11 @@ namespace EmployeeAppLib
         /// <param name="employees">Контейнер</param>
         /// <param name="id">Id отдела в базе данных</param>
         /// <returns>Контейнер заполненный данными из базы данных</returns>
-        public static List<EmployeeModel> GetEmployeesWithPosititon(this List<EmployeeModel> employees, int id)
+        public async static Task<List<EmployeeModel>> GetEmployeesWithPosititon(this List<EmployeeModel> employees, int id)
         {
             using (Db = new EmployeeAppContext(Options))
             {
-                employees = Db.Employees.Where(e => e.UnitId == id).Include(e => e.Position).ToList();
+                employees = await Db.Employees.Where(e => e.UnitId == id).Include(e => e.Position).ToListAsync();
             }
             return employees;
         }
@@ -80,11 +83,11 @@ namespace EmployeeAppLib
         /// </summary>
         /// <param name="units">Пустой контейнер</param>
         /// <returns>Контейнер заполненный данными из базы данных</returns>
-        public static List<UnitModel> GetAllUnits(this List<UnitModel> units)
+        public async static Task<List<UnitModel>> GetAllUnits(this List<UnitModel> units)
         {
             using (Db = new EmployeeAppContext(Options))
             {
-                units = Db.Units.ToList();
+                units = await Db.Units.ToListAsync();
             }
             return units;
         }
@@ -93,12 +96,12 @@ namespace EmployeeAppLib
         /// </summary>
         /// <param name="units">Пустой контейнер</param>
         /// <returns>Контейнер заполненный данными из базы данных</returns>
-        public static List<UnitModel> GetAllUnitsWithPositions(this List<UnitModel> output)
+        public async static Task<List<UnitModel>> GetAllUnitsWithPositions(this List<UnitModel> output)
         {
              //= new List<UnitModel>();
             using (Db = new EmployeeAppContext(Options))
             {
-                 output =  Db.Units.Include(u => u.Positions).ToList();
+                 output =  await Db.Units.Include(u => u.Positions).ToListAsync();
             }
             return output;
         }

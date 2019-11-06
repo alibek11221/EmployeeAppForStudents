@@ -14,20 +14,26 @@ namespace EmployeeAppUi
 {
     public partial class PaymentsFrom : Form
     {
-        public List<UnitModel> units = new List<UnitModel>().GetAllUnits();
+        public List<UnitModel> units;
         public List<EmployeeModel> employees { get; set; } = new List<EmployeeModel>();
         public UnitModel unit { get; set; } = new UnitModel();
         public EmployeeModel employee { get; set; } = new EmployeeModel();
         public PaymentsFrom()
         {
             InitializeComponent();
+            initialize();
+            
+        }
+        private async void initialize()
+        {
+            units = await new List<UnitModel>().GetAllUnits();
             foreach (var unit in units)
             {
                 UnitBox.Items.Add(unit.UnitName);
             }
         }
 
-        private void MakePaymentButton_Click(object sender, EventArgs e)
+        private async void MakePaymentButton_Click(object sender, EventArgs e)
         {
             employee = employees[EmployeesBox.SelectedIndex];
             if (ValidatePaymenForm())
@@ -38,7 +44,7 @@ namespace EmployeeAppUi
                     PaymentDate = DateTime.Now,
                     EmployeeId = employee.Id
                 };
-                payment.AddPayment();
+                await payment.AddPayment();
             }
             else
             {
@@ -75,11 +81,11 @@ namespace EmployeeAppUi
             return output;
         }
 
-        private void UnitBox_SelectedIndexChanged(object sender, EventArgs e)
+        private async void UnitBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             EmployeesBox.Items.Clear();
             unit = units[UnitBox.SelectedIndex];
-            employees = employees.GetEmployeesWithPosititon(unit.Id);
+            employees = await employees.GetEmployeesWithPosititon(unit.Id);
             foreach (var employee in employees)
             {
                 EmployeesBox.Items.Add($"{employee.FullName}:{employee.Position.DayliSalary}");

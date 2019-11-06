@@ -43,5 +43,12 @@ namespace EmployeeAppUi
             employee.ShowDialog();
             employee.Dispose();
         }
+
+        private void ShowBaseButton_Click(object sender, EventArgs e)
+        {
+            ShowBaseForm baseForm = new ShowBaseForm();
+            baseForm.ShowDialog();
+            baseForm.Dispose();
+        }
     }
 }

@@ -22,9 +22,9 @@ namespace EmployeeAppUi
         }
 
         public List<UnitModel> units;
-        private void Itnitialize()
+        private async void Itnitialize()
         {
-            units = new List<UnitModel>().GetAllUnitsWithPositions();
+            units =  await new List<UnitModel>().GetAllUnitsWithPositions();
         }
 
         private void RefreshAll()
@@ -55,7 +55,7 @@ namespace EmployeeAppUi
             return output;
         }
 
-        private void AddUnitButton_Click(object sender, EventArgs e)
+        private async void AddUnitButton_Click(object sender, EventArgs e)
         {
             if (ValidateUnitForm())//Если заполнены все необходимые поля
             {
@@ -63,8 +63,8 @@ namespace EmployeeAppUi
                 {
                     UnitName = UnitNameTextBox.Text//Присвоить свойству UnitName значение.
                 };
-                unit.AddUnit();//Вызвать метод AddUnit для сохранения данных в БД
-                units = units.GetAllUnitsWithPositions();//Обновляем значение свойства units.
+                await unit.AddUnit();//Вызвать метод AddUnit для сохранения данных в БД
+                units = await units.GetAllUnitsWithPositions();//Обновляем значение свойства units.
                 RefreshAll();//Опустошаем все поля.
             }
             else//Иначе
@@ -76,7 +76,7 @@ namespace EmployeeAppUi
             }
         }
 
-        private void AddPositionButton_Click(object sender, EventArgs e)
+        private async void AddPositionButton_Click(object sender, EventArgs e)
         {
             if (ValidatePostion())
             {
@@ -86,8 +86,8 @@ namespace EmployeeAppUi
                     DayliSalary = int.Parse(PositionSalaryBox.Text),
                     UnitId = UnitComboBox.SelectedIndex + 1
                 };
-                position.AddPosition();
-                units = units.GetAllUnitsWithPositions();
+                await position.AddPosition();
+                units = await units.GetAllUnitsWithPositions();
                 RefreshAll();
             }
             else
