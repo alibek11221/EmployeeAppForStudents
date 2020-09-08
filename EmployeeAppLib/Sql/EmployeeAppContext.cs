@@ -7,7 +7,7 @@ using EmployeeAppLib.Models;
 
 namespace EmployeeAppLib.Sql
 {
-    public class EmployeeAppContext : DbContext
+    public sealed class EmployeeAppContext : DbContext
     {
         public DbSet<EmployeeModel> Employees { get; set; }
         public DbSet<PositionModel> Positions { get; set; }
