@@ -22,9 +22,10 @@ namespace EmployeeAppUi
         }
 
         public List<UnitModel> units;
+
         private async void Itnitialize()
         {
-            units =  await new List<UnitModel>().GetAllUnitsWithPositions();
+            units = await new List<UnitModel>().GetAllUnitsWithPositions();
         }
 
         private void RefreshAll()
@@ -57,22 +58,22 @@ namespace EmployeeAppUi
 
         private async void AddUnitButton_Click(object sender, EventArgs e)
         {
-            if (ValidateUnitForm())//Если заполнены все необходимые поля
+            if (ValidateUnitForm()) //Если заполнены все необходимые поля
             {
-                UnitModel unit = new UnitModel//Создать объект класса UnitModel
+                UnitModel unit = new UnitModel //Создать объект класса UnitModel
                 {
-                    UnitName = UnitNameTextBox.Text//Присвоить свойству UnitName значение.
+                    UnitName = UnitNameTextBox.Text //Присвоить свойству UnitName значение.
                 };
-                await unit.AddUnit();//Вызвать метод AddUnit для сохранения данных в БД
-                units = await units.GetAllUnitsWithPositions();//Обновляем значение свойства units.
-                RefreshAll();//Опустошаем все поля.
+                await unit.AddUnit(); //Вызвать метод AddUnit для сохранения данных в БД
+                units = await units.GetAllUnitsWithPositions(); //Обновляем значение свойства units.
+                RefreshAll(); //Опустошаем все поля.
             }
-            else//Иначе
+            else //Иначе
             {
                 MessageBox.Show("Проверьте правильность введенных данных",
-                                "Не заполнены все поля",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);//Вывести сообщение об ошибке на экран.
+                    "Не заполнены все поля",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error); //Вывести сообщение об ошибке на экран.
             }
         }
 
@@ -93,11 +94,12 @@ namespace EmployeeAppUi
             else
             {
                 MessageBox.Show("Проверьте правильность введенных данных",
-                                "Не заполнены все поля",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                    "Не заполнены все поля",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
+
         private void RefreshButton_Click(object sender, EventArgs e)
         {
             UnitsList.Items.Clear();
@@ -123,7 +125,5 @@ namespace EmployeeAppUi
                 UnitComboBox.Items.Add($"{unit.UnitName}");
             }
         }
-
-
     }
 }

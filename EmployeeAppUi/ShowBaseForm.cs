@@ -20,10 +20,10 @@ namespace EmployeeAppUi
             Initialize();
         }
 
-        private  void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
         }
+
         private async void Initialize()
         {
             List<UnitModel> units = await new List<UnitModel>().GetAllUnits();

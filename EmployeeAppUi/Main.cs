@@ -21,13 +21,12 @@ namespace EmployeeAppUi
 
         private void UnitsButton_Click(object sender, EventArgs e)
         {
-            Units units = new Units();//Создаем объект класса Units
-            units.ShowDialog();//Вызываем метод ShowDialog() класса Units 
+            Units units = new Units(); //Создаем объект класса Units
+            units.ShowDialog(); //Вызываем метод ShowDialog() класса Units 
             //(Выводит форму в виде модального окна)
-            units.Dispose();//Вызываем метод Dispose() класса Units
+            units.Dispose(); //Вызываем метод Dispose() класса Units
             //(Удаляет объект класса Units.)
         }
-
 
 
         private void PaymentsButton_Click(object sender, EventArgs e)

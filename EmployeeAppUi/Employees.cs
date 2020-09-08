@@ -16,6 +16,7 @@ namespace EmployeeAppUi
     public partial class EmployeesForm : Form
     {
         public List<UnitModel> units;
+
         private async void Itnitialize()
         {
             units = await new List<UnitModel>().GetAllUnitsWithPositions();
@@ -23,8 +24,8 @@ namespace EmployeeAppUi
             {
                 UnitComboBox.Items.Add(unit.UnitName);
             }
-
         }
+
         public EmployeesForm()
         {
             InitializeComponent();
@@ -32,24 +33,26 @@ namespace EmployeeAppUi
 
         private void Employee_Load(object sender, EventArgs e)
         {
-             Itnitialize();
-            
+            Itnitialize();
         }
+
         private void UnitComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PositionListBox.Items.Clear();
             if (UnitComboBox.SelectedIndex != -1)
-            { 
+            {
                 foreach (var postition in units[UnitComboBox.SelectedIndex].Positions)
                 {
                     PositionListBox.Items.Add(postition.PositionName);
                 }
             }
         }
+
         private bool ValidateEmployeeForm()
         {
             bool output = true;
-            if (SurnameBox.Text.Trim() == string.Empty && NameBox.Text.Trim() == string.Empty && MiddlenameBox.Text.Trim() == string.Empty)
+            if (SurnameBox.Text.Trim() == string.Empty && NameBox.Text.Trim() == string.Empty &&
+                MiddlenameBox.Text.Trim() == string.Empty)
                 output = false;
             if (DateTime.Now.Year - BornYearDate.Value.Year < 18)
                 output = false;
@@ -62,7 +65,8 @@ namespace EmployeeAppUi
 
         private async void AddEmployeeButton_Click(object sender, EventArgs e)
         {
-            try{
+            try
+            {
                 if (ValidateEmployeeForm())
                 {
                     UnitModel unit = units[UnitComboBox.SelectedIndex];
@@ -81,15 +85,17 @@ namespace EmployeeAppUi
                 }
                 else
                 {
-                    MessageBox.Show("Заполнены не все поля формы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Заполнены не все поля формы", "Ошибка", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
-            catch(DbUpdateException) 
+            catch (DbUpdateException)
             {
-                MessageBox.Show("Сотрудник с такой должностью уже числится в базе", "Должность уже занята", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Сотрудник с такой должностью уже числится в базе", "Должность уже занята",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
         private void JobDone()
         {
             SurnameBox.Text = "";
@@ -103,8 +109,10 @@ namespace EmployeeAppUi
             KidsAmountNumeric.Value = 0;
             UnitComboBox.SelectedIndex = -1;
             PositionListBox.SelectedIndex = -1;
-            MessageBox.Show("Сотрудник успешно добавлен в базу", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Сотрудник успешно добавлен в базу", "Успешно", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
+
         private void HasKidsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             KidsAmountNumeric.Enabled = !KidsAmountNumeric.Enabled;
