@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeAppUi", "EmployeeAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeAppLib", "EmployeeAppLib\EmployeeAppLib.csproj", "{359EE697-670D-4847-ABFB-317652643927}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeAppWebApi", "EmployeeAppWebApi\EmployeeAppWebApi.csproj", "{15825599-68B5-4F22-B647-041D3776914D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{359EE697-670D-4847-ABFB-317652643927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{359EE697-670D-4847-ABFB-317652643927}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{359EE697-670D-4847-ABFB-317652643927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15825599-68B5-4F22-B647-041D3776914D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15825599-68B5-4F22-B647-041D3776914D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15825599-68B5-4F22-B647-041D3776914D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15825599-68B5-4F22-B647-041D3776914D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
