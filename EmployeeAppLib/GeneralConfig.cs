@@ -1,99 +1,105 @@
-﻿using EmployeeAppLib.Models;
-using EmployeeAppLib.Sql;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using EmployeeAppLib.Models;
+using EmployeeAppLib.Sql;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeAppLib
 {
     public static class GeneralConfig
     {
-        private static string cnnString;
-        private static EmployeeAppContext Db;
-        private static readonly DbContextOptionsBuilder<EmployeeAppContext> OptionsBuilder = new DbContextOptionsBuilder<EmployeeAppContext>();
-        private static DbContextOptions<EmployeeAppContext> Options;
-        
+        private static string _cnnString;
+        private static EmployeeAppContext _db;
+
+        private static readonly DbContextOptionsBuilder<EmployeeAppContext> OptionsBuilder =
+            new DbContextOptionsBuilder<EmployeeAppContext>();
+
+        private static DbContextOptions<EmployeeAppContext> _options;
+
         public static void SetCnnString(string name)
         {
-            cnnString = ConfigurationManager.ConnectionStrings[name].ConnectionString;
-            Options = OptionsBuilder.UseSqlServer(cnnString).Options;
-            Db = new EmployeeAppContext(Options);
+            _cnnString = ConfigurationManager.ConnectionStrings[name].ConnectionString;
+            _options = OptionsBuilder.UseSqlServer(_cnnString).Options;
+            _db = new EmployeeAppContext(_options);
         }
 
-        public async static Task AddEmployee(this EmployeeModel employee)
+        public static async Task AddEmployee(this EmployeeModel employee)
         {
-            using(Db = new EmployeeAppContext(Options))
+            using (_db = new EmployeeAppContext(_options))
             {
-                await Db.Employees.AddAsync(employee);
-                await Db.SaveChangesAsync();
-            }
-        }
-        public async static Task AddUnit(this UnitModel unit)
-        {
-            using (Db = new EmployeeAppContext(Options))
-            {
-                await Db.Units.AddAsync(unit);
-                await Db.SaveChangesAsync();
-            }
-        }
-        public async static Task AddPosition(this PositionModel position)
-        {
-            using(Db = new EmployeeAppContext(Options))
-            {
-                await Db.Positions.AddAsync(position);
-                await Db.SaveChangesAsync();
-            }
-        }
-        public async static Task AddPayment(this PaymentModel payment)
-        {
-            using(Db = new EmployeeAppContext(Options))
-            {
-                await  Db.Payments.AddAsync(payment);
-                await Db.SaveChangesAsync();
+                await _db.Employees.AddAsync(employee);
+                await _db.SaveChangesAsync();
             }
         }
 
-        public async static Task<List<EmployeeModel>> GetEmployeesWithPosititon(this List<EmployeeModel> employees, int id)
+        public static async Task AddUnit(this UnitModel unit)
         {
-            using (Db = new EmployeeAppContext(Options))
+            using (_db = new EmployeeAppContext(_options))
             {
-                employees = await Db.Employees.Where(e => e.UnitId == id).Include(e => e.Position).ToListAsync();
+                await _db.Units.AddAsync(unit);
+                await _db.SaveChangesAsync();
             }
+        }
+
+        public static async Task AddPosition(this PositionModel position)
+        {
+            using (_db = new EmployeeAppContext(_options))
+            {
+                await _db.Positions.AddAsync(position);
+                await _db.SaveChangesAsync();
+            }
+        }
+
+        public static async Task AddPayment(this PaymentModel payment)
+        {
+            using (_db = new EmployeeAppContext(_options))
+            {
+                await _db.Payments.AddAsync(payment);
+                await _db.SaveChangesAsync();
+            }
+        }
+
+        public static async Task<List<EmployeeModel>> GetEmployeesWithPosititon(this List<EmployeeModel> employees,
+            int id)
+        {
+            using (_db = new EmployeeAppContext(_options))
+            {
+                employees = await _db.Employees.Where(e => e.UnitId == id).Include(e => e.Position).ToListAsync();
+            }
+
             return employees;
         }
 
-        public async static Task<List<UnitModel>> GetAllUnits(this List<UnitModel> units)
+        public static async Task<List<UnitModel>> GetAllUnits(this List<UnitModel> units)
         {
-            using (Db = new EmployeeAppContext(Options))
+            using (_db = new EmployeeAppContext(_options))
             {
-                units = await Db.Units.ToListAsync();
+                units = await _db.Units.ToListAsync();
             }
+
             return units;
         }
-       
-        public async static Task<List<UnitModel>> GetAllUnitsWithPositions(this List<UnitModel> output)
+
+        public static async Task<List<UnitModel>> GetAllUnitsWithPositions(this List<UnitModel> output)
         {
-             //= new List<UnitModel>();
-            using (Db = new EmployeeAppContext(Options))
+            //= new List<UnitModel>();
+            using (_db = new EmployeeAppContext(_options))
             {
-                 output =  await Db.Units.Include(u => u.Positions).ToListAsync();
+                output = await _db.Units.Include(u => u.Positions).ToListAsync();
             }
+
             return output;
         }
 
         public static List<PositionModel> GetPositionByUnit(this List<PositionModel> positions, UnitModel unit)
         {
-            using(Db = new EmployeeAppContext(Options))
+            using (_db = new EmployeeAppContext(_options))
             {
-                foreach (PositionModel position in unit.Positions)
-                {
-                    positions.Add(position);
-                }
+                positions.AddRange(unit.Positions);
             }
+
             return positions;
         }
     }

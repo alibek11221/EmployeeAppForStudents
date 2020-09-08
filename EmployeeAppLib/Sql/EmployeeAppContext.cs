@@ -7,18 +7,19 @@ using EmployeeAppLib.Models;
 
 namespace EmployeeAppLib.Sql
 {
-    public class EmployeeAppContext : DbContext
+    public sealed class EmployeeAppContext : DbContext
     {
         public DbSet<EmployeeModel> Employees { get; set; }
         public DbSet<PositionModel> Positions { get; set; }
         public DbSet<PaymentModel> Payments { get; set; }
         public DbSet<UnitModel> Units { get; set; }
 
-        public  EmployeeAppContext(DbContextOptions<EmployeeAppContext> options)
+        public EmployeeAppContext(DbContextOptions<EmployeeAppContext> options)
             : base(options)
         {
             Database.EnsureCreated();
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UnitModel>()

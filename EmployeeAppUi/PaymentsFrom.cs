@@ -18,12 +18,13 @@ namespace EmployeeAppUi
         public List<EmployeeModel> employees { get; set; } = new List<EmployeeModel>();
         public UnitModel unit { get; set; } = new UnitModel();
         public EmployeeModel employee { get; set; } = new EmployeeModel();
+
         public PaymentsFrom()
         {
             InitializeComponent();
             initialize();
-            
         }
+
         private async void initialize()
         {
             units = await new List<UnitModel>().GetAllUnits();
@@ -48,18 +49,21 @@ namespace EmployeeAppUi
             }
             else
             {
-                MessageBox.Show("Проверьте правильность введенных данных", "Ошибка в заполнении формы", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Проверьте правильность введенных данных", "Ошибка в заполнении формы",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private decimal CalculatePayment(EmployeeModel employee)
         {
             decimal output;
             int workdays = GetAllWorkDays(BeginnigDate.Value, EndingDate.Value);
             int salary = employee.Position.DayliSalary * workdays;
-            output = salary -(salary * 0.13M);
+            output = salary - (salary * 0.13M);
             AmountLabel.Text = $"{output.ToString()}.руб";
             return output;
         }
+
         private int GetAllWorkDays(DateTime begin, DateTime end)
         {
             int counter = 0;
@@ -69,8 +73,10 @@ namespace EmployeeAppUi
                     counter++;
                 begin = begin.AddDays(1);
             }
+
             return counter;
         }
+
         private bool ValidatePaymenForm()
         {
             bool output = true;
