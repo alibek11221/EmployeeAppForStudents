@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeAppWebApi.Models
 {
     public class Employee
     {
-        public int Id { get; set; }
+        [Key]
+        public Guid Id { get; set; }
         public string FullName { get; set; }
         public DateTime BornYear { get; set; }
         public bool Gender { get; set; }

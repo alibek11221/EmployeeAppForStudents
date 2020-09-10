@@ -1,7 +1,7 @@
 ﻿using EmployeeAppWebApi.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmployeeAppWebApi.DataContext
+namespace EmployeeAppWebApi.Data
 {
     public class DataContext : DbContext
     {
