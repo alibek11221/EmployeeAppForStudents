@@ -1,12 +1,17 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EmployeeAppWebApi.Models
 {
-    public class Payment
+    public class Payment : IDateModel
     {
-        public int Id { get; set; }
-        public DateTime PaymentDate { get; set; }
-        public decimal PaymentAmount { get; set; }
-        public EmployeeAppWebApi.Models.Employee Employee { get; set; }
+        [Key] public Guid Id { get; set; }
+        public DateTime Date { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+
+        [Column(TypeName = "money")] public decimal PaymentAmount { get; set; }
+        public Employee Employee { get; set; }
     }
 }
