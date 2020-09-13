@@ -2,7 +2,6 @@
 using System.Linq;
 using EmployeeAppWebApi.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 
 namespace EmployeeAppWebApi.Data
 {

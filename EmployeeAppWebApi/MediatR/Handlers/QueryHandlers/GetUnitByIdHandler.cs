@@ -1,16 +1,28 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using EmployeeAppWebApi.Contracts.V1.Dtos.Response;
 using EmployeeAppWebApi.MediatR.Queries;
+using EmployeeAppWebApi.Services;
 using MediatR;
 
 namespace EmployeeAppWebApi.MediatR.Handlers.QueryHandlers
 {
     public class GetUnitByIdHandler : IRequestHandler<GetUnitByIdQuery, GetUnitResponse>
     {
+        private readonly IUnitService _unitService;
+        private readonly IMapper _mapper;
+
+        public GetUnitByIdHandler(IUnitService unitService, IMapper mapper)
+        {
+            _unitService = unitService;
+            _mapper = mapper;
+        }
+
         public async Task<GetUnitResponse> Handle(GetUnitByIdQuery request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            var unit = await _unitService.GetUnitByIdAsync(request.Id,cancellationToken);
+            return _mapper.Map<Models.Unit, GetUnitResponse>(unit);
         }
     }
 }

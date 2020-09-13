@@ -6,14 +6,9 @@ namespace EmployeeAppWebApi.Models
 {
     public class Payment : IDateModel
     {
-        [Key] 
-        public Guid Id { get; set; }
+        [Key] public Guid Id { get; set; }
         public DateTime Date { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime UpdatedAt { get; set; }
 
         [Column(TypeName = "money")] public decimal PaymentAmount { get; set; }

@@ -29,10 +29,10 @@ namespace EmployeeAppWebApi.Controllers.V1
             return Ok(result);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetUnit(Guid id, CancellationToken cancellationToken)
+        [HttpGet(ApiRoutes.Units.Get)]
+        public async Task<IActionResult> GetUnit(Guid unitId, CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(new GetUnitByIdQuery(id), cancellationToken);
+            var result = await _mediator.Send(new GetUnitByIdQuery(unitId), cancellationToken);
             return result != null ? (IActionResult) Ok(result) : NotFound();
         }
 
@@ -41,7 +41,7 @@ namespace EmployeeAppWebApi.Controllers.V1
         {
             var command = _mapper.Map<CreateUnitRequest, CreateUnitCommand>(request);
             var result = await _mediator.Send(command);
-            return Ok(result);
+            return CreatedAtAction(nameof(GetUnit), new {unitId = result.Id}, result);
         }
     }
 }

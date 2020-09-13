@@ -16,10 +16,7 @@ namespace EmployeeAppWebApi.Data.migrations
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Units", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Units", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "Employees",

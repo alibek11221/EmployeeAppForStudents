@@ -17,12 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\EmployeeAppCoreLibrary\EmployeeAppCoreLibrary.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
         <Folder Include="MediatR" />
-        <Folder Include="Repository" />
     </ItemGroup>
 
 

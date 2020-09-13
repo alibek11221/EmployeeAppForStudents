@@ -24,7 +24,8 @@ namespace EmployeeAppWebApi.Services
 
         public async Task<Unit> GetUnitByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return await _dataContext.Units.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            var unit = await _dataContext.Units.FirstOrDefaultAsync(x =>id.Equals(x.Id), cancellationToken);
+            return unit;
         }
 
         public async Task<bool> UpdateUnitAsync(Unit unitToUpdate, CancellationToken cancellationToken)
