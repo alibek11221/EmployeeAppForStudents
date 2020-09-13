@@ -7,6 +7,5 @@ namespace EmployeeAppWebApi.MediatR.Commands
     public class CreateUnitCommand : IRequest<GetUnitResponse>
     {
         public string Name { get; set; }
-        public DateTime CreatedAt { get; set; }
     }
 }
