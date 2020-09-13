@@ -11,8 +11,8 @@
         public static class Units
         {
             public const string GetAll = Base + "/units";
-            public const string Get =  Base + "/units/{unitId}";
-            public const string Create =  Base + "/units";
+            public const string Get = Base + "/units/{unitId}";
+            public const string Create = Base + "/units";
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EmployeeAppWebApi.Data;
 using EmployeeAppWebApi.Models;
@@ -16,41 +17,41 @@ namespace EmployeeAppWebApi.Services
             _dataContext = dataContext;
         }
 
-        public async Task<List<Unit>> GetUnitsAsync()
+        public async Task<List<Unit>> GetUnitsAsync(CancellationToken cancellationToken)
         {
-            return await _dataContext.Units.ToListAsync();
+            return await _dataContext.Units.ToListAsync(cancellationToken);
         }
 
-        public async Task<Unit> GetUnitByIdAsync(Guid id)
+        public async Task<Unit> GetUnitByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return await _dataContext.Units.FirstOrDefaultAsync(x => x.Id == id);
+            return await _dataContext.Units.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
 
-        public async Task<bool> UpdateUnitAsync(Unit unitToUpdate)
+        public async Task<bool> UpdateUnitAsync(Unit unitToUpdate, CancellationToken cancellationToken)
         {
             _dataContext.Units.Update(unitToUpdate);
-            var updated = await _dataContext.SaveChangesAsync();
+            var updated = await _dataContext.SaveChangesAsync(cancellationToken);
             return updated > 0;
         }
 
-        public async Task<bool> DeleteUnitAsync(Guid id)
+        public async Task<bool> DeleteUnitAsync(Guid id, CancellationToken cancellationToken)
         {
-            var unit = await GetUnitByIdAsync(id);
+            var unit = await GetUnitByIdAsync(id, cancellationToken);
             if (unit == null)
             {
                 return false;
             }
 
             _dataContext.Units.Remove(unit);
-            var deleted = await _dataContext.SaveChangesAsync();
+            var deleted = await _dataContext.SaveChangesAsync(cancellationToken);
             return deleted > 0;
         }
 
-        public async Task<bool> CreateUnitAsync(Unit unit)
+        public async Task<Unit> CreateUnitAsync(Unit unit, CancellationToken cancellationToken)
         {
-            await _dataContext.Units.AddAsync(unit);
-            var created = await _dataContext.SaveChangesAsync();
-            return created > 0;
+            await _dataContext.Units.AddAsync(unit, cancellationToken);
+            await _dataContext.SaveChangesAsync(cancellationToken);
+            return unit;
         }
     }
 }

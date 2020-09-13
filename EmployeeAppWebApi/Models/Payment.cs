@@ -6,11 +6,9 @@ namespace EmployeeAppWebApi.Models
 {
     public class Payment
     {
-        [Key]
-        public Guid Id { get; set; }
-        public DateTime PaymentDate { get; set; }
-        [Column(TypeName = "money")]
-        public decimal PaymentAmount { get; set; }
-        public EmployeeAppWebApi.Models.Employee Employee { get; set; }
+        [Key] public Guid Id { get; set; }
+        public DateTime Date { get; set; }
+        [Column(TypeName = "money")] public decimal PaymentAmount { get; set; }
+        public Employee Employee { get; set; }
     }
 }

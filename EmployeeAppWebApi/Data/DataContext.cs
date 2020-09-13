@@ -8,7 +8,7 @@ namespace EmployeeAppWebApi.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-        
+
         public DbSet<Unit> Units { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Employee> Employees { get; set; }

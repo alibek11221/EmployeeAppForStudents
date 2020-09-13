@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using EmployeeAppWebApi.Contracts.V1;
+using EmployeeAppWebApi.Contracts.V1.Dtos.Request;
 using EmployeeAppWebApi.MediatR.Commands;
 using EmployeeAppWebApi.MediatR.Queries;
 using MediatR;
@@ -12,37 +14,34 @@ namespace EmployeeAppWebApi.Controllers.V1
     public class UnitsController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public UnitsController(IMediator mediator)
+        public UnitsController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
+            _mapper = mapper;
         }
 
         [HttpGet(ApiRoutes.Units.GetAll)]
         public async Task<IActionResult> GetAllUnits()
         {
-            var query = new GetAllUnitsQuery();
-            var result = await _mediator.Send(query);
+            var result = await _mediator.Send(new GetAllUnitsQuery());
             return Ok(result);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetUnit(Guid id, CancellationToken cancellationToken)
         {
-            var query = new GetUnitByIdQuery(id);
-            var result = await _mediator.Send(query, cancellationToken);
+            var result = await _mediator.Send(new GetUnitByIdQuery(id), cancellationToken);
             return result != null ? (IActionResult) Ok(result) : NotFound();
         }
 
         [HttpPost(ApiRoutes.Units.Create)]
-        public async Task<IActionResult> CreateUnit([FromBody] CreateUnitCommand request)
+        public async Task<IActionResult> CreateUnit([FromBody] CreateUnitRequest request)
         {
-            var result = await _mediator.Send(request);
-
-            var baseurl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-
-            var locationUri = baseurl + "/" + ApiRoutes.Units.Get.Replace("{unitId}", request.ToString());
-            return Created(locationUri, result);
+            var command = _mapper.Map<CreateUnitRequest, CreateUnitCommand>(request);
+            var result = await _mediator.Send(command);
+            return Ok(result);
         }
     }
 }
