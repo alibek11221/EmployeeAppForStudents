@@ -10,9 +10,7 @@ namespace EmployeeAppWebApi
     {
         public AutoMapperProfiles()
         {
-            CreateMap<Unit, GetUnitResponse>();
-            CreateMap<CreateUnitRequest, CreateUnitCommand>();
-            CreateMap<CreateUnitCommand, Unit>();
+           
         }
     }
 }

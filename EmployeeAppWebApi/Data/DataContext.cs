@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using EmployeeAppWebApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +18,7 @@ namespace EmployeeAppWebApi.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Payment> Payments { get; set; }
 
-        public override int SaveChanges()
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             var entries = ChangeTracker
                 .Entries()
@@ -29,8 +31,7 @@ namespace EmployeeAppWebApi.Data
                 if (x.State == EntityState.Added)
                     ((IDateModel) x.Entity).CreatedAt = DateTime.Now;
             });
-
-            return base.SaveChanges();
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }

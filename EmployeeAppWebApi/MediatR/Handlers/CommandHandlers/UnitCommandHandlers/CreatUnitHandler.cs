@@ -1,15 +1,13 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using EmployeeAppWebApi.Contracts.V1.Dtos.Request;
 using EmployeeAppWebApi.Contracts.V1.Dtos.Response;
 using EmployeeAppWebApi.MediatR.Commands;
 using EmployeeAppWebApi.Services;
 using MediatR;
 using Unit = EmployeeAppWebApi.Models.Unit;
 
-namespace EmployeeAppWebApi.MediatR.Handlers.CommandHandlers
+namespace EmployeeAppWebApi.MediatR.Handlers.CommandHandlers.UnitCommandHandlers
 {
     public class CreateUnitHandler : IRequestHandler<CreateUnitCommand, GetUnitResponse>
     {
@@ -25,7 +23,7 @@ namespace EmployeeAppWebApi.MediatR.Handlers.CommandHandlers
         public async Task<GetUnitResponse> Handle(CreateUnitCommand request, CancellationToken cancellationToken)
         {
             var mappedUnit = _mapper.Map<CreateUnitCommand, Unit>(request);
-            var created = await _unitService.CreateUnitAsync(mappedUnit, cancellationToken);
+            var created = await _unitService.CreateAsync(mappedUnit, cancellationToken);
             return _mapper.Map<Unit, GetUnitResponse>(created);
         }
     }

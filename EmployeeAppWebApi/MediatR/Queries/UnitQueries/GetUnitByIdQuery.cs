@@ -2,7 +2,7 @@
 using EmployeeAppWebApi.Contracts.V1.Dtos.Response;
 using MediatR;
 
-namespace EmployeeAppWebApi.MediatR.Queries
+namespace EmployeeAppWebApi.MediatR.Queries.UnitQueries
 {
     public class GetUnitByIdQuery : IRequest<GetUnitResponse>
     {
@@ -10,7 +10,7 @@ namespace EmployeeAppWebApi.MediatR.Queries
 
         public GetUnitByIdQuery(Guid id)
         {
-            id = Id;
+            Id = id;
         }
     }
 }

@@ -6,6 +6,7 @@ using EmployeeAppWebApi.Contracts.V1;
 using EmployeeAppWebApi.Contracts.V1.Dtos.Request;
 using EmployeeAppWebApi.MediatR.Commands;
 using EmployeeAppWebApi.MediatR.Queries;
+using EmployeeAppWebApi.MediatR.Queries.UnitQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

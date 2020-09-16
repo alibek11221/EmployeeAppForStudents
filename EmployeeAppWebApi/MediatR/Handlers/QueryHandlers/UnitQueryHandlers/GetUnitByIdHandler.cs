@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using EmployeeAppWebApi.Contracts.V1.Dtos.Response;
-using EmployeeAppWebApi.MediatR.Queries;
+using EmployeeAppWebApi.MediatR.Queries.UnitQueries;
 using EmployeeAppWebApi.Services;
 using MediatR;
 
-namespace EmployeeAppWebApi.MediatR.Handlers.QueryHandlers
+namespace EmployeeAppWebApi.MediatR.Handlers.QueryHandlers.UnitQueryHandlers
 {
     public class GetUnitByIdHandler : IRequestHandler<GetUnitByIdQuery, GetUnitResponse>
     {
@@ -21,7 +21,7 @@ namespace EmployeeAppWebApi.MediatR.Handlers.QueryHandlers
 
         public async Task<GetUnitResponse> Handle(GetUnitByIdQuery request, CancellationToken cancellationToken)
         {
-            var unit = await _unitService.GetUnitByIdAsync(request.Id,cancellationToken);
+            var unit = await _unitService.GetByIdAsync(request.Id, cancellationToken);
             return _mapper.Map<Models.Unit, GetUnitResponse>(unit);
         }
     }
