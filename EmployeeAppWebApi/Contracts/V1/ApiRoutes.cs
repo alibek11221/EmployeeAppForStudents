@@ -14,5 +14,9 @@
             public const string Get = Base + "/units/{unitId}";
             public const string Create = Base + "/units";
         }
+        public static class Positions
+        {
+            public const string GetAll = Base + "/positions";
+        }
     }
 }

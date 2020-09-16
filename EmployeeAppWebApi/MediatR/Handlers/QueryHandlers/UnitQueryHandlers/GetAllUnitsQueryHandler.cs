@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using EmployeeAppWebApi.Contracts.V1.Dtos.Response;
-using EmployeeAppWebApi.MediatR.Queries;
+using EmployeeAppWebApi.MediatR.Queries.UnitQueries;
 using EmployeeAppWebApi.Services;
 using MediatR;
 using Unit = EmployeeAppWebApi.Models.Unit;
 
-namespace EmployeeAppWebApi.MediatR.Handlers.QueryHandlers
+namespace EmployeeAppWebApi.MediatR.Handlers.QueryHandlers.UnitQueryHandlers
 {
     public class GetAllUnitsQueryHandler : IRequestHandler<GetAllUnitsQuery, List<GetUnitResponse>>
     {
@@ -25,7 +24,7 @@ namespace EmployeeAppWebApi.MediatR.Handlers.QueryHandlers
 
         public async Task<List<GetUnitResponse>> Handle(GetAllUnitsQuery request, CancellationToken cancellationToken)
         {
-            var units = await _unitService.GetUnitsAsync(cancellationToken);
+            var units = await _unitService.GetAllAsync(cancellationToken);
             return units.Select(x => _mapper.Map<Unit, GetUnitResponse>(x)).ToList();
         }
     }
