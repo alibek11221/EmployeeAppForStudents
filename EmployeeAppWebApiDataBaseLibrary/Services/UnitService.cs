@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using EmployeeAppWebApi.Data;
-using EmployeeAppWebApi.Models;
+using EmployeeAppWebApiDataBaseLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmployeeAppWebApi.Services
+namespace EmployeeAppWebApiDataBaseLibrary.Services
 {
     public class UnitService : IUnitService
     {
-        private readonly DataContext _dataContext;
+        private readonly DataContext.DataContext _dataContext;
 
-        public UnitService(DataContext dataContext)
+        public UnitService(DataContext.DataContext dataContext)
         {
             _dataContext = dataContext;
         }

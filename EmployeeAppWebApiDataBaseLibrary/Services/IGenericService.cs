@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EmployeeAppWebApi.Services
+namespace EmployeeAppWebApiDataBaseLibrary.Services
 {
-    public interface IGenericService<T> 
+    public interface IGenericService<T>
     {
         Task<List<T>> GetAllAsync(CancellationToken cancellationToken);
         Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken);

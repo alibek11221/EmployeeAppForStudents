@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using EmployeeAppWebApi.Models;
+using EmployeeAppWebApiDataBaseLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmployeeAppWebApi.Data
+namespace EmployeeAppWebApiDataBaseLibrary.DataContext
 {
     public class DataContext : DbContext
     {
@@ -22,14 +22,14 @@ namespace EmployeeAppWebApi.Data
         {
             var entries = ChangeTracker
                 .Entries()
-                .Where(e => e.Entity is IDateModel &&
+                .Where(e => e.Entity is IDateTrackable &&
                             (e.State == EntityState.Added || e.State == EntityState.Modified))
                 .ToList();
             entries.ForEach(x =>
             {
-                ((IDateModel) x.Entity).UpdatedAt = DateTime.Now;
+                ((IDateTrackable) x.Entity).UpdatedAt = DateTime.Now;
                 if (x.State == EntityState.Added)
-                    ((IDateModel) x.Entity).CreatedAt = DateTime.Now;
+                    ((IDateTrackable) x.Entity).CreatedAt = DateTime.Now;
             });
             return base.SaveChangesAsync(cancellationToken);
         }

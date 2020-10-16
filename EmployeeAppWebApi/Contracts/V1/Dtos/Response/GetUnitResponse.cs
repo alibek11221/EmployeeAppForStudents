@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using EmployeeAppWebApi.Models;
+using EmployeeAppWebApiDataBaseLibrary.Models;
 
 namespace EmployeeAppWebApi.Contracts.V1.Dtos.Response
 {

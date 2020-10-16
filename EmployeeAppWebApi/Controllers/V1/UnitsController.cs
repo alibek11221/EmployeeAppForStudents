@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using EmployeeAppWebApi.Contracts.V1;
 using EmployeeAppWebApi.Contracts.V1.Dtos.Request;
-using EmployeeAppWebApi.MediatR.Commands;
-using EmployeeAppWebApi.MediatR.Queries;
+using EmployeeAppWebApi.Contracts.V1.Dtos.Response;
+using EmployeeAppWebApi.MediatR.Commands.UnitCommands;
 using EmployeeAppWebApi.MediatR.Queries.UnitQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -14,8 +15,8 @@ namespace EmployeeAppWebApi.Controllers.V1
 {
     public class UnitsController : ControllerBase
     {
-        private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
 
         public UnitsController(IMediator mediator, IMapper mapper)
         {
@@ -24,6 +25,7 @@ namespace EmployeeAppWebApi.Controllers.V1
         }
 
         [HttpGet(ApiRoutes.Units.GetAll)]
+        [ProducesResponseType(typeof(List<GetUnitResponse>), 200)]
         public async Task<IActionResult> GetAllUnits()
         {
             var result = await _mediator.Send(new GetAllUnitsQuery());
@@ -31,18 +33,21 @@ namespace EmployeeAppWebApi.Controllers.V1
         }
 
         [HttpGet(ApiRoutes.Units.Get)]
+        [ProducesResponseType(typeof(GetUnitResponse), 200)]
         public async Task<IActionResult> GetUnit(Guid unitId, CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(new GetUnitByIdQuery(unitId), cancellationToken);
             return result != null ? (IActionResult) Ok(result) : NotFound();
         }
 
+
         [HttpPost(ApiRoutes.Units.Create)]
+        [ProducesResponseType(typeof(GetUnitResponse), 201)]
         public async Task<IActionResult> CreateUnit([FromBody] CreateUnitRequest request)
         {
             var command = _mapper.Map<CreateUnitRequest, CreateUnitCommand>(request);
             var result = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetUnit), new {unitId = result.Id}, result);
+            return Created($"{Request.Path}/{result.Id}", result);
         }
     }
 }

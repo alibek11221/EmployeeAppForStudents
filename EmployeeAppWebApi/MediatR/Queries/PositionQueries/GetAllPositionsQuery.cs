@@ -6,6 +6,5 @@ namespace EmployeeAppWebApi.MediatR.Queries.PositionQueries
 {
     public class GetAllPositionsQuery : IRequest<List<GetPositionResponse>>
     {
-        
     }
 }

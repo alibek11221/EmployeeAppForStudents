@@ -5,16 +5,17 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EmployeeAppWebApi.Contracts.V1.Dtos.Response;
 using EmployeeAppWebApi.MediatR.Queries.UnitQueries;
-using EmployeeAppWebApi.Services;
+using EmployeeAppWebApiDataBaseLibrary.Models;
+using EmployeeAppWebApiDataBaseLibrary.Services;
 using MediatR;
-using Unit = EmployeeAppWebApi.Models.Unit;
+using Unit = EmployeeAppWebApiDataBaseLibrary.Models.Unit;
 
 namespace EmployeeAppWebApi.MediatR.Handlers.QueryHandlers.UnitQueryHandlers
 {
     public class GetAllUnitsQueryHandler : IRequestHandler<GetAllUnitsQuery, List<GetUnitResponse>>
     {
-        private readonly IUnitService _unitService;
         private readonly IMapper _mapper;
+        private readonly IUnitService _unitService;
 
         public GetAllUnitsQueryHandler(IMapper mapper, IUnitService unitService)
         {

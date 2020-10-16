@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EmployeeAppWebApi.Contracts.V1.Dtos.Response;
 using EmployeeAppWebApi.MediatR.Queries.PositionQueries;
-using EmployeeAppWebApi.Models;
-using EmployeeAppWebApi.Services;
+using EmployeeAppWebApiDataBaseLibrary.Models;
+using EmployeeAppWebApiDataBaseLibrary.Services;
 using MediatR;
 
 namespace EmployeeAppWebApi.MediatR.Handlers.QueryHandlers.PositionQueryHandlers
@@ -21,7 +21,9 @@ namespace EmployeeAppWebApi.MediatR.Handlers.QueryHandlers.PositionQueryHandlers
             _positionService = positionService;
             _mapper = mapper;
         }
-        public async Task<List<GetPositionResponse>> Handle(GetAllPositionsQuery request, CancellationToken cancellationToken)
+
+        public async Task<List<GetPositionResponse>> Handle(GetAllPositionsQuery request,
+            CancellationToken cancellationToken)
         {
             var positions = await _positionService.GetAllAsync(cancellationToken);
             return positions.Select(x => _mapper.Map<Position, GetPositionResponse>(x)).ToList();

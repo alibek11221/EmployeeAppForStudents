@@ -1,5 +1,5 @@
-﻿using EmployeeAppWebApi.Data;
-using EmployeeAppWebApi.Services;
+﻿using EmployeeAppWebApiDataBaseLibrary.DataContext;
+using EmployeeAppWebApiDataBaseLibrary.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +12,8 @@ namespace EmployeeAppWebApi.Installers
         {
             services.AddDbContext<DataContext>(x =>
                 x.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<IUnitService, UnitService>();
+            services.AddTransient<IUnitService, UnitService>();
+            services.AddTransient<IPositionService, PositionService>();
         }
     }
 }

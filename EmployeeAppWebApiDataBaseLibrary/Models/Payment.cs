@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EmployeeAppWebApi.Models
+namespace EmployeeAppWebApiDataBaseLibrary.Models
 {
-    public class Payment : IDateModel
+    public class Payment : IDateTrackable
     {
         [Key] public Guid Id { get; set; }
         public DateTime Date { get; set; }
